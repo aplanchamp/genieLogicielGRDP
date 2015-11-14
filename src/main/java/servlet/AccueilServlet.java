@@ -14,21 +14,12 @@ import spark.template.freemarker.FreeMarkerEngine;
 public class AccueilServlet extends AbstractServlet {
 
 	@Override
-	public ModelAndView handle(Request request, Response response) throws Exception {
-		Configuration config = new Configuration();
-    	config.setDirectoryForTemplateLoading(new File("src/main/resources"));
-    	config.setDefaultEncoding("UTF-8");
-
-       	FreeMarkerEngine freeEngine = new FreeMarkerEngine();
-    	freeEngine.setConfiguration(config);
-    	
+	public ModelAndView handle(Request request, Response response) throws Exception {  	
     	Map<String, Object> attributes = new HashMap<>();
         attributes.put("header", "CNRS BORDEAUX");
         attributes.put("user", "coucou");
         
         return new ModelAndView(attributes, "hello.ftl");
-        
-        //return "foo";
 	}
 
 }
