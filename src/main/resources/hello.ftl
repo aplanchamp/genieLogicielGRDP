@@ -17,16 +17,18 @@
 			</ul>
 		</div>
 
-		<div class="col-md-2">
-			<div class="input-group">
-				<span class="input-group-addon" id="basic-addon1">@</span>
-				<input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+		<form method="POST" action="hello"> 
+			<div class="col-md-2">
+				<div class="input-group">
+					<span class="input-group-addon" id="basic-addon1">@</span>
+					<input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" name="user">
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon" id="basic-addon1">@</span>
+					<input type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon1" name="password">
+				</div>
+				<input type="submit" class="btn btn-primary btn-lg btn-block" value="Register">
 			</div>
-			<div class="input-group">
-				<span class="input-group-addon" id="basic-addon1">@</span>
-				<input type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
-			</div>
-			<a type="button" href="/register" class="btn btn-primary btn-lg btn-block">Register</a>
-		</div>
+		</form>
 </body>
 </html>

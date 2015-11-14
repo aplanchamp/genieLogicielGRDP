@@ -30,10 +30,10 @@ public class Main {
             return new ModelAndView(attributes, "hello.ftl");
         }, freeEngine);
         
-        get("/register", (request, response) -> {
+        post("/hello", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
-            attributes.put("message", "Hello World!");
-            return new ModelAndView(attributes, "coucou.ftl");
+            attributes.put("header", "Hello World!");
+            return new ModelAndView(attributes, "hello.ftl");
         }, freeEngine);
 
     }
