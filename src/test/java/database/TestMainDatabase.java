@@ -10,7 +10,9 @@ public class TestMainDatabase {
 
 	@Test
 	public void test() throws SQLException {
-		MainDatabase.initDatabase();
+		MainDatabase.createTableLaboratoire();
+		MainDatabase.addLaboratoire("aude", "yo", "aplanchamp@gmail.com", 0633504520);
+		MainDatabase.getAllLaboratoire();
 	}
 
 }
