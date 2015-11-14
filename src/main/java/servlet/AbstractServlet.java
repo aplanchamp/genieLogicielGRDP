@@ -1,12 +1,14 @@
 package servlet;
 
+import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 import spark.Route;
+import spark.TemplateViewRoute;
 
-public abstract class AbstractServlet implements Route{
+public abstract class AbstractServlet implements TemplateViewRoute{
 
-	public Object handle(Request req, Response res) throws Exception {
+	public ModelAndView handle(Request req, Response res) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -1,12 +1,13 @@
 package servlet;
 
+import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 
 public class DetailsAtelierServlet extends AbstractServlet{
 
 	@Override
-	public Object handle(Request req, Response res) throws Exception {
-		return "details atelier";
+	public ModelAndView handle(Request req, Response res) throws Exception {
+		return null;
 	}
 }
