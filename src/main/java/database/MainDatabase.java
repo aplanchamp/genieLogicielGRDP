@@ -99,7 +99,7 @@ public class MainDatabase {
 			ResultSet rs = selectPreparedStatement.executeQuery();
 			System.out.println("H2 Database inserted through PreparedStatement");
 			while (rs.next()) {
-				System.out.println("Id "+rs.getInt("id")+" Name "+rs.getString("name")+" Phone "+rs.getString("phoneNumber")+rs.getString("mail")+rs.getString("password"));
+				System.out.println("Id "+rs.getInt("id")+" Name "+rs.getString("name")+" Phone "+rs.getString("phoneNumber")+" mail "+rs.getString("mail")+rs.getString("password"));
 			}
 			selectPreparedStatement.close();
 
