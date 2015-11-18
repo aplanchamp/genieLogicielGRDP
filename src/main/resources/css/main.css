@@ -1,0 +1,17 @@
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+
+/* Main marketing message and sign up button */
+.register {
+  padding-top: 50px;
+  background-color: transparent;
+}
+.register .btn {
+  font-size: 21px;
+}
+.register .input-group {
+	padding-bottom: 8px;
+}
