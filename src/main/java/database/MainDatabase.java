@@ -91,7 +91,7 @@ public class MainDatabase {
 	public static Laboratoire getLaboratoireByName(String name) throws SQLException {
 		Connection connection = getDBConnection();
 		Laboratoire laboratoire;
-		String SelectQuery = "select * from LABORATOIRE";
+		String SelectQuery = "select * from LABORATOIRE WHERE name = 'Aude'";
 		System.out.println("coucou1");
 		PreparedStatement selectPreparedStatement = null;
 		System.out.println("coucou2");
