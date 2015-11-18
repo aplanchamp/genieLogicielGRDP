@@ -11,7 +11,6 @@ public class AccueilServlet extends AbstractServlet {
 
 	@Override
 	public ModelAndView handle(Request request, Response response) throws Exception {  	
-		
 		if(request.requestMethod() == "POST"){
 			Map<String, Object> attributes = new HashMap<>();
 	        attributes.put("header", "tata");
@@ -28,9 +27,6 @@ public class AccueilServlet extends AbstractServlet {
 	        attributes.put("user", "coucou");        
 	        return new ModelAndView(attributes, "hello.ftl");
 		}
-		
-
-
 	}
 
 }

@@ -4,9 +4,11 @@ import static spark.Spark.*;
 
 import java.io.File;
 import java.io.IOException;
-
+import java.util.HashMap;
+import java.util.Map;
 
 import freemarker.template.Configuration;
+import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 import spark.template.freemarker.FreeMarkerEngine;
@@ -21,6 +23,8 @@ public class Main {
     	FreeMarkerEngine freeEngine = new FreeMarkerEngine();
     	freeEngine.setConfiguration(config);
     	
+        staticFileLocation("/css");
+    	
     	// Redirection vers la servlet accueil
     	get("/",(Request req,Response resp)->{
     		resp.redirect("/accueil");
@@ -32,6 +36,8 @@ public class Main {
         get("/laboratoire", new LaboratoireServlet(),freeEngine);
         get("/detailsAtelier", new DetailsAtelierServlet(),freeEngine);
         get("/ajouter", new AjouterModifierAtelierServlet(),freeEngine);
+ 
+
         
     }
 }

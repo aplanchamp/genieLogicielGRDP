@@ -14,28 +14,28 @@ import static spark.Spark.post;
 
 public class Main {
 
-    public static void main(String args[]) throws IOException {
-   	
-    	Configuration config = new Configuration();
-    	config.setDirectoryForTemplateLoading(new File("src/main/resources"));
-    	config.setDefaultEncoding("UTF-8");
+	public static void main(String args[]) throws IOException {
 
-       	FreeMarkerEngine freeEngine = new FreeMarkerEngine();
-    	freeEngine.setConfiguration(config);
-    	
-        get("/hello", (request, response) -> {
-            Map<String, Object> attributes = new HashMap<>();
-            attributes.put("header", "CNRS BORDEAUX");
-            attributes.put("user", "coucou");
-            return new ModelAndView(attributes, "hello.ftl");
-        }, freeEngine);
-        
-        post("/hello", (request, response) -> {
-            Map<String, Object> attributes = new HashMap<>();
-            attributes.put("header", "Hello World!");
-            return new ModelAndView(attributes, "hello.ftl");
-        }, freeEngine);
+		Configuration config = new Configuration();
+		config.setDirectoryForTemplateLoading(new File("src/main/resources"));
+		config.setDefaultEncoding("UTF-8");
 
-    }
+		FreeMarkerEngine freeEngine = new FreeMarkerEngine();
+		freeEngine.setConfiguration(config);
+
+		get("/hello", (request, response) -> {
+			Map<String, Object> attributes = new HashMap<>();
+			attributes.put("header", "CNRS BORDEAUX");
+			attributes.put("user", "coucou");
+			return new ModelAndView(attributes, "hello.ftl");
+		}, freeEngine);
+
+		post("/hello", (request, response) -> {
+			Map<String, Object> attributes = new HashMap<>();
+			attributes.put("header", "Hello World!");
+			return new ModelAndView(attributes, "hello.ftl");
+		}, freeEngine);
+
+	}
 
 }
