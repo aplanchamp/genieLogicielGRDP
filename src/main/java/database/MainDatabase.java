@@ -92,22 +92,15 @@ public class MainDatabase {
 		Connection connection = getDBConnection();
 		Laboratoire laboratoire;
 		String SelectQuery = "select * from LABORATOIRE WHERE name = 'Aude'";
-		System.out.println("coucou1");
 		PreparedStatement selectPreparedStatement = null;
-		System.out.println("coucou2");
 		connection.setAutoCommit(false);
-		System.out.println("coucou3");
 		selectPreparedStatement = connection.prepareStatement(SelectQuery);
-		System.out.println("coucou4");
 		ResultSet rs = selectPreparedStatement.executeQuery();
 		rs.first();
 		//System.out.println("coucou5" +rs.first());
 		laboratoire = new Laboratoire(rs.getInt("phoneNumber"), rs.getString("name"), rs.getString("mail"), rs.getString("password"));
-		System.out.println("coucou6");
 		selectPreparedStatement.close();
-		System.out.println("coucou7");
 		connection.commit();
-		System.out.println("coucou8");
 		connection.close();
 
 		return laboratoire;
