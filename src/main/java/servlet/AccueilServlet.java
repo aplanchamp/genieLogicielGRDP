@@ -15,10 +15,12 @@ public class AccueilServlet extends AbstractServlet {
 			Map<String, Object> attributes = new HashMap<>();
 	        attributes.put("header", "tata");
 	        attributes.put("user", "coucou");
-	        System.out.println(request.queryParams("user"));
-	        System.out.println(request.queryParams("password"));
-	        System.out.println(request.queryParams("mail"));
+	        System.out.println(request.queryParams("name"));
+	        System.out.println(request.queryParams("email"));
 	        System.out.println(request.queryParams("phone"));
+	        System.out.println(request.queryParams("password"));
+	        System.out.println(request.queryParams("userConnect"));
+	        System.out.println(request.queryParams("passwordConnect"));
 	        return new ModelAndView(attributes, "hello.ftl");
 		}
 		else{

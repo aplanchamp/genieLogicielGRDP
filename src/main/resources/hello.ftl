@@ -26,12 +26,12 @@
 						<li><a href="#">Page 2</a></li> 
 						<li><a href="#">Page 3</a></li> 
 					</ul>
-					<form class="navbar-form navbar-right">
+					<form method="POST" class="navbar-form navbar-right">
 						<div class="form-group">
-							<input type="text" placeholder="Email" class="form-control">
+							<input type="text" placeholder="Email" class="form-control" name="userConnect">
 						</div>
 						<div class="form-group">
-							<input type="password" placeholder="Password" class="form-control">
+							<input type="password" placeholder="Password" class="form-control" name="passwordConnect">
 						</div>
 						<button type="submit" class="btn btn-success">Sign in</button>
 					</form>
