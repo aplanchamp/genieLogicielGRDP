@@ -4,15 +4,11 @@ import static spark.Spark.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+
 
 import freemarker.template.Configuration;
-import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
-import spark.Spark;
-import spark.TemplateViewRoute;
 import spark.template.freemarker.FreeMarkerEngine;
 
 public class Main {
@@ -32,6 +28,7 @@ public class Main {
     	});  
     	
         get("/accueil", new AccueilServlet(),freeEngine);
+        post("/accueil", new AccueilServlet(),freeEngine);
         get("/laboratoire", new LaboratoireServlet(),freeEngine);
         get("/detailsAtelier", new DetailsAtelierServlet(),freeEngine);
         get("/ajouter", new AjouterModifierAtelierServlet(),freeEngine);

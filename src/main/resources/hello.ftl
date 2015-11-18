@@ -17,7 +17,7 @@
 			</ul>
 		</div>
 
-		<form method="POST" action="hello"> 
+		<form method="POST" action="accueil"> 
 			<div class="col-md-2">
 				<div class="input-group">
 					<span class="input-group-addon" id="basic-addon1">@</span>
