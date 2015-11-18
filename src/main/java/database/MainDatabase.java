@@ -7,11 +7,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import metier.Laboratoire;
-
-import org.h2.tools.DeleteDbFiles;
-
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 // H2 Database Example
 
@@ -21,7 +19,7 @@ public class MainDatabase {
 	private static final String DB_CONNECTION = "jdbc:h2:~/database";
 	private static final String DB_USER = "admin";
 	private static final String DB_PASSWORD = "admin";
-
+	public static final String SALT = "aude-heloise_maxime_philippe";
 
 
 	//	public static void main(String[] args) throws Exception {
@@ -65,20 +63,37 @@ public class MainDatabase {
 		Connection connection = getDBConnection();
 		String InsertQuery = "INSERT INTO LABORATOIRE" + "(name, mail, phoneNumber, password) values" + "(?,?,?,?)";
 		PreparedStatement insertPreparedStatement = null;
+		String password2 = "123456";
 
-		try {
-			connection.setAutoCommit(false);
+		try{ MessageDigest md = MessageDigest.getInstance("MD5");
+		md.update(password2.getBytes());
 
-			insertPreparedStatement = connection.prepareStatement(InsertQuery);
-			insertPreparedStatement.setString(1, name);
-			insertPreparedStatement.setString(2, email);
-			insertPreparedStatement.setInt(3, phoneNumber);
-			insertPreparedStatement.setString(4, password);
-			insertPreparedStatement.executeUpdate();
-			insertPreparedStatement.close();
+		byte byteData[] = md.digest();
 
-			connection.commit();
-		} catch (SQLException e) {
+		//convert the byte to hex format method 1
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < byteData.length; i++) {
+			sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+		}
+		System.out.println("Digest(in hex format):: " + sb.toString());
+
+		connection.setAutoCommit(false);
+
+		insertPreparedStatement = connection.prepareStatement(InsertQuery);
+		insertPreparedStatement.setString(1, name);
+		insertPreparedStatement.setString(2, email);
+		insertPreparedStatement.setInt(3, phoneNumber);
+		insertPreparedStatement.setString(4,sb.toString());
+		insertPreparedStatement.executeUpdate();
+		insertPreparedStatement.close();
+
+		connection.commit();
+
+		}
+		catch (NoSuchAlgorithmException x){   System.out.println("NOT OK");
+		}
+
+		catch (SQLException e) {
 			System.out.println("Exception Message " + e.getLocalizedMessage());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -117,7 +132,7 @@ public class MainDatabase {
 			selectPreparedStatement = connection.prepareStatement(SelectQuery);
 			ResultSet rs = selectPreparedStatement.executeQuery();
 			while (rs.next()) {
-				System.out.println(" Name "+rs.getString("name")+" Phone "+rs.getString("phoneNumber")+" mail "+rs.getString("mail")+rs.getString("password"));
+				System.out.println(" Name :"+rs.getString("name")+" Phone : "+rs.getString("phoneNumber")+" mail : "+rs.getString("mail")+ " password :" +rs.getString("password"));
 			}
 			selectPreparedStatement.close();
 
