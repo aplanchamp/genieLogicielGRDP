@@ -7,6 +7,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import metier.Atelier;
 import metier.Laboratoire;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -19,27 +21,14 @@ public class MainDatabase {
 	private static final String DB_CONNECTION = "jdbc:h2:~/database";
 	private static final String DB_USER = "admin";
 	private static final String DB_PASSWORD = "admin";
-	public static final String SALT = "aude-heloise_maxime_philippe";
 
-
-	//	public static void main(String[] args) throws Exception {
-	//		try {
-	//			// delete the H2 database named 'test' in the user home directory
-	//			DeleteDbFiles.execute("~", "database", true);
-	//			insertWithStatement();
-	//			DeleteDbFiles.execute("~", "database", true);
-	//			insertWithPreparedStatement();
-	//
-	//		} catch (SQLException e) {
-	//			e.printStackTrace();
-	//		}
-	//	}
 
 	public static void createTableLaboratoire() throws SQLException {
 		Connection connection = getDBConnection();
 		PreparedStatement createPreparedStatement = null;
 
-		String CreateTable = "CREATE TABLE IF NOT EXISTS LABORATOIRE(name varchar(255) primary key, mail varchar(255) NOT NULL, phoneNumber int(10) NOT NULL, password varchar(255) NOT NULL)";
+
+		String CreateTable = "CREATE TABLE IF NOT EXISTS LABORATOIRE(name varchar(255) primary key, mail varchar(255) NOT NULL, phoneNumber varchar(20) NOT NULL, password varchar(255) NOT NULL)";
 
 		try {
 			connection.setAutoCommit(false);
@@ -58,8 +47,32 @@ public class MainDatabase {
 
 	}
 
+	public static void createTableAtelier() throws SQLException {
+		Connection connection = getDBConnection();
+		PreparedStatement createPreparedStatement = null;
 
-	public static void addLaboratoire(String name,String password, String email, int phoneNumber) throws SQLException{
+		String CreateTable = "CREATE TABLE IF NOT EXISTS ATELIERS(name varchar(255) primary key, description varchar(255) NOT NULL, lieu varchar(255) NOT NULL, responsable varchar(255) NOT NULL, date varchar(255) NOT NULL, heure varchar(255) NOT NULL , nbPlace int(8) NOT NULL)";
+
+		try {
+			connection.setAutoCommit(false);
+
+			createPreparedStatement = connection.prepareStatement(CreateTable);
+			createPreparedStatement.executeUpdate();
+			createPreparedStatement.close();
+			connection.commit();
+		} catch (SQLException e) {
+			System.out.println("Exception Message " + e.getLocalizedMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			connection.close();
+		}
+
+	}	
+
+
+
+	public static void addLaboratoire(String name, String email, String phoneNumber, String password) throws SQLException{
 		Connection connection = getDBConnection();
 		String InsertQuery = "INSERT INTO LABORATOIRE" + "(name, mail, phoneNumber, password) values" + "(?,?,?,?)";
 		PreparedStatement insertPreparedStatement = null;
@@ -67,8 +80,8 @@ public class MainDatabase {
 
 		try{ MessageDigest md = MessageDigest.getInstance("MD5");
 		md.update(password2.getBytes());
-
 		byte byteData[] = md.digest();
+		
 
 		//convert the byte to hex format method 1
 		StringBuffer sb = new StringBuffer();
@@ -82,7 +95,7 @@ public class MainDatabase {
 		insertPreparedStatement = connection.prepareStatement(InsertQuery);
 		insertPreparedStatement.setString(1, name);
 		insertPreparedStatement.setString(2, email);
-		insertPreparedStatement.setInt(3, phoneNumber);
+		insertPreparedStatement.setString(3, phoneNumber);
 		insertPreparedStatement.setString(4,sb.toString());
 		insertPreparedStatement.executeUpdate();
 		insertPreparedStatement.close();
@@ -103,17 +116,50 @@ public class MainDatabase {
 
 	}
 
+	public static void addAtelier(String name, String description, String lieu, String responsable, String date, String heure,
+			int nbPlace) throws SQLException{
+		Connection connection = getDBConnection();
+		String InsertQuery = "INSERT INTO ATELIERS" + "(name, description, lieu, responsable, date, heure, nbPlace) values" + "(?,?,?,?,?,?,?)";
+		PreparedStatement insertPreparedStatement = null;
+
+		try {
+			connection.setAutoCommit(false);
+
+			insertPreparedStatement = connection.prepareStatement(InsertQuery);
+			insertPreparedStatement.setString(1, name);
+			insertPreparedStatement.setString(2, description);
+			insertPreparedStatement.setString(3, lieu);
+			insertPreparedStatement.setString(4, responsable);
+			insertPreparedStatement.setString(5, date);
+			insertPreparedStatement.setString(6, heure);
+			insertPreparedStatement.setInt(7, nbPlace);
+			insertPreparedStatement.executeUpdate();
+			insertPreparedStatement.close();
+
+			connection.commit();
+		} catch (SQLException e) {
+			System.out.println("Exception Message " + e.getLocalizedMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			connection.close();
+		}
+		
+	}
+
 	public static Laboratoire getLaboratoireByName(String name) throws SQLException {
 		Connection connection = getDBConnection();
 		Laboratoire laboratoire;
 		String SelectQuery = "select * from LABORATOIRE WHERE name = name";
+
 		PreparedStatement selectPreparedStatement = null;
 		connection.setAutoCommit(false);
 		selectPreparedStatement = connection.prepareStatement(SelectQuery);
 		ResultSet rs = selectPreparedStatement.executeQuery();
 		rs.first();
-		//System.out.println("coucou5" +rs.first());
-		laboratoire = new Laboratoire(rs.getInt("phoneNumber"), rs.getString("name"), rs.getString("mail"), rs.getString("password"));
+
+		laboratoire = new Laboratoire(rs.getString("name"), rs.getString("mail"), rs.getString("phoneNumber"), rs.getString("password"));
+
 		selectPreparedStatement.close();
 		connection.commit();
 		connection.close();
@@ -121,6 +167,22 @@ public class MainDatabase {
 		return laboratoire;
 	}
 
+	public static Atelier getAtelierByResponsable(String responsable) throws SQLException {
+		Connection connection = getDBConnection();
+		String SelectQuery = "select * from ATELIERS where responsable = responsable";
+		PreparedStatement selectPreparedStatement = null;
+		connection.setAutoCommit(false);
+		selectPreparedStatement = connection.prepareStatement(SelectQuery);
+		ResultSet rs = selectPreparedStatement.executeQuery();
+		rs.first();
+		Atelier atelier = new Atelier(rs.getString("name"), rs.getString("description"), rs.getString("lieu"), rs.getString("responsable") , rs.getString("date") , rs.getString("heure"), rs.getInt("nbPlace"));
+		selectPreparedStatement.close();
+		connection.commit();
+		connection.close();
+
+		return atelier;
+	}
+	
 	public static void printAllLaboratoire() throws SQLException{
 		Connection connection = getDBConnection();
 		String SelectQuery = "select * from LABORATOIRE";
