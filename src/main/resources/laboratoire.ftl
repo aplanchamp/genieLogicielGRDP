@@ -22,12 +22,60 @@
 				</ul>
 			</div>
 
-			<h2>Gestion des ateliers</h2>
-			<button type="submit" class="btn btn-success">Ajouter un nouvel atelier</button>
-
-
-
 			<div class="laboratoire">
+
+				<h2>Gestion des ateliers</h2>
+				<button type="submit" class="btn btn-success">Ajouter un nouvel atelier</button>
+				<hr>
+				<h2>Liste de mes ateliers:</h2>
+
+				<div class="liste-atelier-laboratoire">
+					<div class="one-atelier-list">
+						<dl class="dl-horizontal"> <!-- Mettre un ng-repeat plus tard -->
+						  <dt>Nom de l'atelier:</dt>
+						  <dd>${atelierTitle}</dd>
+						  <dt>Description:</dt>
+						  <dd>${atelierDescription}</dd>
+						  <dt>Horaires:</dt>
+						  <dd>${atelierHour1} - ${atelierHour2}</dd>
+						  <dt>Lieu:</dt>
+						  <dd>${atelierPlace}</dd>
+						  <dt>Responsable :</dt>
+						  <dd>${atelierSupervisor}</dd>
+						  <dt>Place disponibles:</dt>
+						  <dd>${atelierAvailable}</dd>
+						</dl>
+
+						<button>Modifier les détails de cet atelier</button>
+						<button>Supprimer cet atelier</button>
+						<button>Voir les participants</button>
+						<hr>
+					</div>
+
+
+
+					<div class="one-atelier-list">
+						<dl class="dl-horizontal">
+						  <dt>Nom de l'atelier:</dt>
+						  <dd>${atelierTitle}</dd>
+						  <dt>Description:</dt>
+						  <dd>${atelierDescription}</dd>
+						  <dt>Horaires:</dt>
+						  <dd>${atelierHour1} - ${atelierHour2}</dd>
+						  <dt>Lieu:</dt>
+						  <dd>${atelierPlace}</dd>
+						  <dt>Responsable :</dt>
+						  <dd>${atelierSupervisor}</dd>
+						  <dt>Place disponibles:</dt>
+						  <dd>${atelierAvailable}</dd>
+						</dl>
+						<button>Modifier les détails de cet atelier</button>
+						<button>Supprimer cet atelier</button>
+						<button>Voir les participants</button>
+						<hr>
+					</div>
+
+				</div>
 
 			</div>
 		</div>
