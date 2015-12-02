@@ -28,11 +28,8 @@ public class AccueilServlet extends AbstractServlet {
 			Map<String, Object> attributes = new HashMap<>();
 	        attributes.put("header", "titi");
 	        attributes.put("user", "coucou");        
-<<<<<<< HEAD
 	        return new ModelAndView(attributes, "accueil.ftl");
-=======
-	        return new ModelAndView(attributes, "hello.ftl");
->>>>>>> c6df16b0e426851d2954fb3eb7c50266fff54736
+
 		}
 	}
 
