@@ -22,13 +22,14 @@ public class AccueilServlet extends AbstractServlet {
 	        System.out.println(request.queryParams("password"));
 	        System.out.println(request.queryParams("userConnect"));
 	        System.out.println(request.queryParams("passwordConnect"));
-	        return new ModelAndView(attributes, "hello.ftl");
+	        return new ModelAndView(attributes, "accueil.ftl");
 		}
 		else{
 			Map<String, Object> attributes = new HashMap<>();
 	        attributes.put("header", "titi");
 	        attributes.put("user", "coucou");        
-	        return new ModelAndView(attributes, "hello.ftl");
+	        return new ModelAndView(attributes, "accueil.ftl");
+
 		}
 	}
 
