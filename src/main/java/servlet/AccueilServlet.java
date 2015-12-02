@@ -15,6 +15,7 @@ public class AccueilServlet extends AbstractServlet {
 			Map<String, Object> attributes = new HashMap<>();
 	        attributes.put("header", "tata");
 	        attributes.put("user", "coucou");
+	        
 	        System.out.println(request.queryParams("name"));
 	        System.out.println(request.queryParams("email"));
 	        System.out.println(request.queryParams("phone"));
