@@ -22,7 +22,7 @@ public class AccueilServlet extends AbstractServlet {
 	        System.out.println(request.queryParams("password"));
 	        System.out.println(request.queryParams("userConnect"));
 	        System.out.println(request.queryParams("passwordConnect"));
-	       
+	        
 	        return new ModelAndView(attributes, "accueil.ftl");
 	        
 	       
