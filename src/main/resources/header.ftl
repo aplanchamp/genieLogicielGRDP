@@ -22,6 +22,8 @@
 							<input type="password" placeholder="Password" class="form-control" name="passwordConnect">
 						</div>
 						<button type="submit" class="btn btn-success">Sign in</button>
+						<button type="submit" class="btn btn-success">Deconnect</button>
+
 					</form>
 				</div>
 			</div>
