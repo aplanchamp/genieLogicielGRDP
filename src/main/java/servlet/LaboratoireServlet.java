@@ -17,7 +17,8 @@ public class LaboratoireServlet extends AbstractServlet{
 			attributes.put("header", "Laboratoire");
 			
 			// Exemple d'infos pour un atelier listé
-			attributes.put("atelierTitle", "Programmation web");
+			attributes.put("laboName", "INRIA");
+			attributes.put("atelierTitle", "Un de mes ateliers");
 			attributes.put("atelierDescription", "Voici une description de l'atelier.");    
 			attributes.put("atelierHour1", "9h30");
 			attributes.put("atelierHour2", "coucou");

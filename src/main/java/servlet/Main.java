@@ -36,6 +36,7 @@ public class Main {
         get("/laboratoire", new LaboratoireServlet(),freeEngine);
         get("/detailsAtelier", new DetailsAtelierServlet(),freeEngine);
         get("/ajouter", new AjouterModifierAtelierServlet(),freeEngine);
+        get("/listAtelier", new DetailsAtelierServlet(),freeEngine);
  
         
         
