@@ -9,7 +9,7 @@
 </head>
 	<body>
 		<div class="page-header">
-			<h1>Circuit Scientifique Bordelais <small>Laboratoire</small></h1>
+			<h1>Circuit Scientifique Bordelais <small>{$header}}</small></h1>
 		</div>
 		<div class="page-header">
 			<ul class="nav nav-pills">
@@ -19,19 +19,14 @@
 			</ul>
 		</div>
 
-		<div class="details-atelier">
+		<h2>Gestion des ateliers</h2>
+		<button type="submit" class="btn btn-success">Ajouter un nouvel atelier</button>
 
-			<dl class="dl-horizontal">
-			  <dt>Un variable ${variable1}:</dt>
-			  <dd>${variable1}</dd>
 
-			</dl>
+
+		<div class="laboratoire">
+
 		</div>
-
-		
-
-
-
 
 </body>
 </html>
