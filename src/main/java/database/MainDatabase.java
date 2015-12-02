@@ -8,6 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
+
 import metier.Atelier;
 import metier.Laboratoire;
 import java.security.MessageDigest;
@@ -21,7 +24,7 @@ public class MainDatabase {
 	private static final String DB_CONNECTION = "jdbc:h2:~/database";
 	private static final String DB_USER = "admin";
 	private static final String DB_PASSWORD = "admin";
-
+	static Map<String,String> passwordcrypte = new HashMap<String, String>(); 
 
 	public static void createTableLaboratoire() throws SQLException {
 		Connection connection = getDBConnection();
@@ -88,8 +91,8 @@ public class MainDatabase {
 		for (int i = 0; i < byteData.length; i++) {
 			sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
 		}
-		//System.out.println("Digest(in hex format):: " + sb.toString());
-
+		passwordcrypte.put(password,sb.toString());
+		
 		connection.setAutoCommit(false);
 
 		insertPreparedStatement = connection.prepareStatement(InsertQuery);
@@ -159,7 +162,7 @@ public class MainDatabase {
 		rs.first();
 
 		laboratoire = new Laboratoire(rs.getString("name"), rs.getString("mail"), rs.getString("phoneNumber"), rs.getString("password"));
-
+		System.out.println("name :" + rs.getString("name"));
 		selectPreparedStatement.close();
 		connection.commit();
 		connection.close();
@@ -209,47 +212,36 @@ public class MainDatabase {
 
 	}	
 
-	// H2 SQL Prepared Statement Example
-	//	private static void insertWithPreparedStatement() throws SQLException {
-	//		Connection connection = getDBConnection();
-	//		PreparedStatement createPreparedStatement = null;
-	//		PreparedStatement insertPreparedStatement = null;
-	//		PreparedStatement selectPreparedStatement = null;
-	//
-	//		String CreateQuery = "CREATE TABLE LABORATOIRE(id int primary key, name varchar(255) NOT NULL, mail varchar(255) NOT NULL, phoneNumber int(10) NOT NULL, password varchar(255) NOT NULL)";
-	//		String InsertQuery = "INSERT INTO LABORATOIRE" + "(id, name, mail, phoneNumber, password) values" + "(?,?,?,?,?)";
-	//		String SelectQuery = "select * from LABORATOIRE";
-	//		try {
-	//			connection.setAutoCommit(false);
-	//
-	//			createPreparedStatement = connection.prepareStatement(CreateQuery);
-	//			createPreparedStatement.executeUpdate();
-	//			createPreparedStatement.close();
-	//
-	//			insertPreparedStatement = connection.prepareStatement(InsertQuery);
-	//			insertPreparedStatement.setInt(1, 1);
-	//			insertPreparedStatement.setString(2, "Jose");
-	//			insertPreparedStatement.executeUpdate();
-	//			insertPreparedStatement.close();
-	//
-	//			//			selectPreparedStatement = connection.prepareStatement(SelectQuery);
-	//			//			ResultSet rs = selectPreparedStatement.executeQuery();
-	//			//			System.out.println("H2 Database inserted through PreparedStatement");
-	//			//			while (rs.next()) {
-	//			//				System.out.println("Id "+rs.getInt("id")+" Name "+rs.getString("name"));
-	//			//			}
-	//			//			selectPreparedStatement.close();
-	//
-	//			connection.commit();
-	//		} catch (SQLException e) {
-	//			System.out.println("Exception Message " + e.getLocalizedMessage());
-	//		} catch (Exception e) {
-	//			e.printStackTrace();
-	//		} finally {
-	//			connection.close();
-	//		}
-	//	}
 
+public static void connexionLabo(String mail, String password) throws SQLException{
+// on recupère le mot de passe	
+	Connection connection = getDBConnection();
+	String SelectQuery = "select* from LABORATOIRE WHERE mail = mail";
+	PreparedStatement selectPreparedStatement = null;
+	connection.setAutoCommit(false);
+	selectPreparedStatement = connection.prepareStatement(SelectQuery);
+	ResultSet rs = selectPreparedStatement.executeQuery();
+	rs.first();
+	System.out.println("mail :" + rs.getString("mail"));
+
+	// on regarde dans la table de hashage
+	if (passwordcrypte.get(password) != null){
+	if (rs.getString("password").equals(passwordcrypte.get(password)))
+	{
+		
+		System.out.println("Tu peux te connecter " + rs.getString("password")+" " + passwordcrypte.get(password) );
+	}
+	else {
+		System.out.println("Tu ne peux pas te connecter |" +   rs.getString("password")+"| |" + passwordcrypte.get(password)+ "|");
+	}
+	}
+	else {
+		
+	System.out.println("ADRESSE MAIL NON ENREGISTREE");
+	}
+	
+	
+}
 
 	private static Connection getDBConnection() {
 		Connection dbConnection = null;
