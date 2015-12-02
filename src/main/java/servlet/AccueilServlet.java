@@ -24,6 +24,7 @@ public class AccueilServlet extends AbstractServlet {
 	        System.out.println(request.queryParams("passwordConnect"));
 	        response.redirect("/laboratoire");
 	        return new ModelAndView(attributes, "errorRedirect.ftl");
+	     
 	        
 	       
 		}

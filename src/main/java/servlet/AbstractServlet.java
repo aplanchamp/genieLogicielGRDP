@@ -18,11 +18,17 @@ public abstract class AbstractServlet implements TemplateViewRoute{
 		if(request.requestMethod() == "POST"){
 			if(request.session().isNew())
 			{
-				request.session(true);                            // create and return session
-				request.session().attribute("mail",request.queryParams("userConnect"));   // Get session attribute 'user'
+				request.session(true);  
+				request.session().attribute("mail",request.queryParams("userConnect"));   
 				request.session().attribute("password",request.queryParams("passwordConnect"));
+				System.out.println("tatta");
+			}
+			else
+			{
+				request.session().id();
 			}
 		}
+		
 
 		return null;
 	}
