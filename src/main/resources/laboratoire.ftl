@@ -8,25 +8,28 @@
 	<link rel="stylesheet" href="main.css">
 </head>
 	<body>
-		<div class="page-header">
-			<h1>Circuit Scientifique Bordelais <small>{$header}}</small></h1>
+		<div class="container theme-showcase" role="main">
+			<#import "header.ftl" as m>
+			<@m.filterheader />
+			<div class="page-header">
+				<h1>Circuit Scientifique Bordelais <small>${header}</small></h1>
+			</div>
+			<div class="page-header">
+				<ul class="nav nav-pills">
+					<li role="presentation" class="active"><a href="#">Home</a></li>
+					<li role="presentation"><a href="#">Profile</a></li>
+					<li role="presentation"><a href="#">Messages</a></li>
+				</ul>
+			</div>
+
+			<h2>Gestion des ateliers</h2>
+			<button type="submit" class="btn btn-success">Ajouter un nouvel atelier</button>
+
+
+
+			<div class="laboratoire">
+
+			</div>
 		</div>
-		<div class="page-header">
-			<ul class="nav nav-pills">
-				<li role="presentation" class="active"><a href="#">Home</a></li>
-				<li role="presentation"><a href="#">Profile</a></li>
-				<li role="presentation"><a href="#">Messages</a></li>
-			</ul>
-		</div>
-
-		<h2>Gestion des ateliers</h2>
-		<button type="submit" class="btn btn-success">Ajouter un nouvel atelier</button>
-
-
-
-		<div class="laboratoire">
-
-		</div>
-
-</body>
+	</body>
 </html>
