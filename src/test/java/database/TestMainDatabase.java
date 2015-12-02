@@ -18,26 +18,26 @@ public class TestMainDatabase {
 		
 		DeleteDbFiles.execute("~", "database", true);
 		
-		//Laboratoire labVerify = new Laboratoire("aude", "aplanchamp@gmail.com", "0633504520", "test");
-		//Atelier atelierVerify = new Atelier("nomAtelier", "descriptionAtelier", "paris", "aude", "12/08/2015", "12:30", 40);
+		Laboratoire labVerify = new Laboratoire("aude", "aplanchamp@gmail.com", "0633504520", "test");
+		Atelier atelierVerify = new Atelier("nomAtelier", "descriptionAtelier", "paris", "aude", "12/08/2015", "12:30", 40);
 		
 		MainDatabase.createTableLaboratoire();
 		MainDatabase.createTableAtelier();
 		
 		MainDatabase.addLaboratoire("aude", "aplanchamp@gmail.com", "0633504520", "yo");
-		//MainDatabase.addAtelier("nomAtelier", "descriptionAtelier", "paris", "aude", "12/08/2015", "12:30", 40);
+		MainDatabase.addAtelier("nomAtelier", "descriptionAtelier", "paris", "aude", "12/08/2015", "12:30", 40);
 		MainDatabase.printAllLaboratoire();
 		MainDatabase.connexionLabo("aplanchamp@gmail.com", "yooo");
 		
-		//Laboratoire myLab = MainDatabase.getLaboratoireByName("aude");
-		//Atelier myAtelier = MainDatabase.getAtelierByResponsable("aude");
+		Laboratoire myLab = MainDatabase.getLaboratoireByName("aude");
+		Atelier myAtelier = MainDatabase.getAtelierByResponsable("aude");
 		
-	//	assertEquals(myLab, labVerify);
-	//	assertEquals(myAtelier, atelierVerify);
-		//assertEquals(myLab.getMail(),labVerify.getMail());
-		//assertEquals(myLab.getName(),labVerify.getName());
-		//assertEquals(myLab.getPassword(),labVerify.getPassword());
-		//assertEquals(myLab.getTelephone(),labVerify.getTelephone());
+		assertEquals(myLab, labVerify);
+		assertEquals(myAtelier, atelierVerify);
+	assertEquals(myLab.getMail(),labVerify.getMail());
+	assertEquals(myLab.getName(),labVerify.getName());
+		assertEquals(myLab.getPassword(),labVerify.getPassword());
+	assertEquals(myLab.getTelephone(),labVerify.getTelephone());
 		
 
 
