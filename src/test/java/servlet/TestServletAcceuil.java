@@ -52,7 +52,7 @@ public class TestServletAcceuil {
 		
 		rd.close();
 
-		String content = new Scanner(new File("src/main/resources/hello.ftl")).useDelimiter("\n").next();	
+		String content = new Scanner(new File("src/main/resources/accueil.ftl")).useDelimiter("\n").next();	
 		assertEquals(line, content);
 		
 		
