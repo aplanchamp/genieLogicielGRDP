@@ -213,8 +213,8 @@ public class MainDatabase {
 	}	
 
 
-public static void connexionLabo(String mail, String password) throws SQLException{
-// on recupère le mot de passe	
+public static boolean connexionLabo(String mail, String password) throws SQLException{
+// on recupere le mot de passe	
 	Connection connection = getDBConnection();
 	String SelectQuery = "select* from LABORATOIRE WHERE mail = mail";
 	PreparedStatement selectPreparedStatement = null;
@@ -228,16 +228,17 @@ public static void connexionLabo(String mail, String password) throws SQLExcepti
 	if (passwordcrypte.get(password) != null){
 	if (rs.getString("password").equals(passwordcrypte.get(password)))
 	{
-		
-		System.out.println("Tu peux te connecter " + rs.getString("password")+" " + passwordcrypte.get(password) );
+		// connexion possible
+		return true;
 	}
 	else {
-		System.out.println("Tu ne peux pas te connecter |" +   rs.getString("password")+"| |" + passwordcrypte.get(password)+ "|");
+		//mauvais mot de passe
+		return false;
 	}
 	}
 	else {
-		
-	System.out.println("ADRESSE MAIL NON ENREGISTREE");
+		// pas d'adresse mail
+		return false;
 	}
 	
 	
