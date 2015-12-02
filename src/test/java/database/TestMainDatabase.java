@@ -18,6 +18,9 @@ public class TestMainDatabase {
 		
 		DeleteDbFiles.execute("~", "database", true);
 		
+
+		Laboratoire labVerify = new Laboratoire("aude", "aplanchamp@gmail.com", "0633504520", "test");
+
 		Atelier atelierVerify = new Atelier("nomAtelier", "descriptionAtelier", "paris", "aude", "12/08/2015", "12:30", 40);
 		
 		MainDatabase.createTableLaboratoire();
@@ -29,6 +32,7 @@ public class TestMainDatabase {
 		
 		Laboratoire myLab = MainDatabase.getLaboratoireByName("aude");
 		Atelier myAtelier = MainDatabase.getAtelierByResponsable("aude");
+
 		
 		assertEquals(myAtelier, atelierVerify);
 		assertEquals(MainDatabase.connexionLabo("aplanchamp@gmail.com", "yo"),true);

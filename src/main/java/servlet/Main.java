@@ -37,7 +37,7 @@ public class Main {
         get("/detailsAtelier", new DetailsAtelierServlet(),freeEngine);
         get("/ajouter", new AjouterModifierAtelierServlet(),freeEngine);
  
-
+        
         
     }
 }
