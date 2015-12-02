@@ -8,10 +8,8 @@
 	<link rel="stylesheet" href="main.css">
 </head>
 	<body>
-	<#import "header.ftl" as m>
-	<@m.filterheader />
 		<div class="page-header">
-			<h1>Circuit Scientifique Bordelais <small>${header}</small></h1>
+			<h1>Circuit Scientifique Bordelais <small>Laboratoire</small></h1>
 		</div>
 		<div class="page-header">
 			<ul class="nav nav-pills">
@@ -24,26 +22,11 @@
 		<div class="details-atelier">
 
 			<dl class="dl-horizontal">
-			  <dt>Nom de l'atelier:</dt>
-			  <dd>${atelierTitle}</dd>
-			  <dt>Description:</dt>
-			  <dd>${atelierDescription}</dd>
-			  <dt>Horaires:</dt>
-			  <dd>${atelierHour1} - ${atelierHour2}</dd>
-			  <dt>Lieu:</dt>
-			  <dd>${atelierPlace}</dd>
-			  <dt>Responsable :</dt>
-			  <dd>${atelierSupervisor}</dd>
-			  <dt>Place disponibles:</dt>
-			  <dd>${atelierAvailable}</dd>
+			  <dt>Un variable ${variable1}:</dt>
+			  <dd>${variable1}</dd>
+
 			</dl>
 		</div>
-
-		<form method="POST" action="detailsAtelier"> <!-- adresse de l'URI vers detailsAtelier -->
-        	<button class="btn btn-primary" type="submit">
-  				S'inscrire à l'atelier 
-			</button>
-     	</form>
 
 		
 
