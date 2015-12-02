@@ -4,8 +4,12 @@
 	<title>Circuit Scientifique Bordelais</title>
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="http://getbootstrap.com/examples/starter-template/starter-template.css"></head>
+	<link rel="stylesheet" href="http://getbootstrap.com/examples/starter-template/starter-template.css">
+	<link rel="stylesheet" href="main.css">
+</head>
 	<body>
+	<#import "header.ftl" as m>
+	<@m.filterheader />
 		<div class="page-header">
 			<h1>Circuit Scientifique Bordelais <small>${header}</small></h1>
 		</div>
