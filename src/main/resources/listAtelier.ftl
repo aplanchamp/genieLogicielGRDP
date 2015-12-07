@@ -23,11 +23,7 @@
 			</div>
 
 			<div class="laboratoire">
-				<a href="/ajouter"><button class="btn btn-success" >Ajouter un nouvel atelier</button></a>
-				<hr>
-				<h2>Mon laboratoire: ${laboName}</h2>
-				<hr>
-				<h2>Liste de mes ateliers: </h2>
+				<h2>Liste des ateliers disponibles: </h2>
 
 				<div class="liste-atelier-laboratoire">
 					<div class="one-atelier-list">

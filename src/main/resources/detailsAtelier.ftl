@@ -44,11 +44,5 @@
   				S'inscrire à l'atelier 
 			</button>
      	</form>
-
-		
-
-
-
-
 </body>
 </html>
