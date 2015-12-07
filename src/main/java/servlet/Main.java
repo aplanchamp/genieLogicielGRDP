@@ -24,6 +24,9 @@ public class Main {
     	freeEngine.setConfiguration(config);
     	
         staticFileLocation("/css");
+        
+        
+        
     	
     	// Redirection vers la servlet accueil
     	get("/",(Request req,Response resp)->{
