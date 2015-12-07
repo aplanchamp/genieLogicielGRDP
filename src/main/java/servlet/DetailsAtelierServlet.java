@@ -3,6 +3,7 @@ package servlet;
 import java.util.HashMap;
 import java.util.Map;
 
+import database.MainDatabase;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -29,6 +30,7 @@ public class DetailsAtelierServlet extends AbstractServlet{
 		// Liste des ateliers disponibles (tout laboratoire confondus)
 		else if(req.requestMethod() == "GET" && req.uri().toString().equals("/listAtelier")){
 			// Un visiteur veut lister les ateliers disponibles à la date du jour
+			MainDatabase.printAllLaboratoire();
 			Map<String, Object> attributes = new HashMap<>();
 			attributes.put("header", "Liste des ateliers");
 			for (int i=0; i<1; i++){ // Changer la boucle pour parcourir le retour SQL sur les ateliers disponibles
