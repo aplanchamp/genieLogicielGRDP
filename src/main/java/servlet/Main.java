@@ -4,9 +4,11 @@ import static spark.Spark.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import database.MainDatabase;
 import freemarker.template.Configuration;
 import spark.ModelAndView;
 import spark.Request;
@@ -15,7 +17,7 @@ import spark.template.freemarker.FreeMarkerEngine;
 
 public class Main {
 	
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, SQLException {
     	
     	Configuration config = new Configuration();
     	config.setDirectoryForTemplateLoading(new File("src/main/resources"));
@@ -25,7 +27,9 @@ public class Main {
     	
         staticFileLocation("/css");
         
-        
+        // Pour les tests, à chaque redémarrage, les tables sont supprimées
+        MainDatabase.dropTableAteliers();
+        MainDatabase.dropTableLaboratoire();
         
     	
     	// Redirection vers la servlet accueil
