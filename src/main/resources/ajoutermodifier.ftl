@@ -17,24 +17,31 @@
 
 			<div class="register">
 				<h1> Ajouter un Atelier </h1>
-				<form method="POST" action="accueil" class="col-md-8">
+				<form method="POST" action="listAtelier" class="col-md-8">
 					<div class="input-group col-md-8">
-						<input type="text" class="form-control" placeholder="Nom de l'atelier" aria-describedby="basic-addon1" name="name">
+						<input type="text" class="form-control" placeholder="Nom de l'atelier" aria-describedby="basic-addon1" name="name_atelier">
 					</div>
 					<div class="input-group col-md-8">
-						<input type="text" class="form-control" placeholder="Description" aria-describedby="basic-addon1" name="email">
+						<input type="text" class="form-control" placeholder="Description" aria-describedby="basic-addon1" name="desc_atelier">
 					</div>
 					<div class="input-group col-md-8">
 						<div class="input-group bootstrap-timepicker timepicker">
-						            <input id="timepicker1" type="text" class="form-control input-small">
+						            <input id="timepicker1" type="text" name="hour_atelier" class="form-control input-small">
 						            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 						</div>
 					</div>
 					<div class="input-group col-md-8">
-						<input type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon1" name="password">
+						<input type="text" class="form-control" placeholder="Lieu de l'atelier" aria-describedby="basic-addon1" name="lieu_atelier">
 					</div>
 					<div class="input-group col-md-8">
-						<input type="submit" class="btn btn-primary btn-lg btn-block" value="Register">
+						<input type="text" class="form-control" placeholder="Responsable" aria-describedby="basic-addon1" name="resp_atelier">
+					</div>
+					<div class="input-group col-md-8">
+						<input type="text" class="form-control" placeholder="Place disponibles" aria-describedby="basic-addon1" name="avail_atelier">
+					</div>
+
+					<div class="input-group col-md-8">
+						<input type="submit" class="btn btn-primary btn-lg btn-block" value="Ajouter">
 					</div>
 				</form>
 			</div>

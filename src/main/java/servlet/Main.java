@@ -37,7 +37,8 @@ public class Main {
         get("/detailsAtelier", new DetailsAtelierServlet(),freeEngine);
         get("/ajouter", new AjouterModifierAtelierServlet(),freeEngine);
         get("/listAtelier", new DetailsAtelierServlet(),freeEngine);
- 
+        post("/listAtelier", new DetailsAtelierServlet(),freeEngine); // post réalisé depuis la page /ajouter
+
         
         
     }

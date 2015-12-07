@@ -45,7 +45,19 @@ public class DetailsAtelierServlet extends AbstractServlet{
 	        return new ModelAndView(attributes, "listAtelier.ftl");
 		}
 		
-		else if(req.requestMethod() == "POST"){
+		else if(req.requestMethod() == "POST" && req.uri().toString().equals("/listAtelier")){
+			System.out.println("methode post et /listAtelier détecté");
+			Map<String, Object> attributes = new HashMap<>();
+
+			// Un visiteur veut ajouter un atelier depuis l'uri /ajouter
+			// Ici, les paramètres doivent être rentrés dans la base de données, puis une redirection est faite vers la page laboratoire 
+			// pour visualiser ses ateliers
+			
+			res.redirect("/laboratoire");
+	        return new ModelAndView(attributes, "errorRedirect.ftl");
+		}
+		
+		else if(req.requestMethod() == "POST" && req.uri().toString().equals("/detailsAtelier") ){
 			System.out.println("coucou");
 			// Un visiteur veut s'inscrire à un atelier, il a appuyé sur le bouton d'inscription
 			Map<String, Object> attributes = new HashMap<>();

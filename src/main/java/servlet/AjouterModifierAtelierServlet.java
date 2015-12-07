@@ -12,6 +12,8 @@ public class AjouterModifierAtelierServlet extends AbstractServlet{
 	@Override
 	public ModelAndView handle(Request request, Response response) throws Exception {
 		if(request.requestMethod() == "POST"){
+			System.out.println("/ajouter dans le post");
+
 			Map<String, Object> attributes = new HashMap<>();
 	        attributes.put("header", "tata");
 	        attributes.put("user", "coucou");
@@ -22,9 +24,11 @@ public class AjouterModifierAtelierServlet extends AbstractServlet{
 	        System.out.println(request.queryParams("password"));
 	        System.out.println(request.queryParams("userConnect"));
 	        System.out.println(request.queryParams("passwordConnect"));
+	        response.redirect("/listAtelier");
 	        return new ModelAndView(attributes, "ajoutermodifier.ftl");
 		}
 		else{
+			System.out.println("/ajouter dans le get");
 			Map<String, Object> attributes = new HashMap<>();
 	        attributes.put("header", "titi");
 	        attributes.put("user", "coucou");        
