@@ -25,21 +25,29 @@
 			<div class="laboratoire">
 				<h2>Liste des ateliers disponibles: </h2>
 
+
+
+				
+
+
+
 				<div class="liste-atelier-laboratoire">
+				<#list ateliers as atelier>
+					
 					<div class="one-atelier-list">
 						<dl class="dl-horizontal"> <!-- Mettre un ng-repeat plus tard -->
 						  <dt>Nom de l'atelier:</dt>
-						  <dd>${atelierTitle}</dd>
+						  <dd>${atelier.name}</dd>
 						  <dt>Description:</dt>
-						  <dd>${atelierDescription}</dd>
+						  <dd>${atelier.description}</dd>
 						  <dt>Horaires:</dt>
-						  <dd>${atelierHour1} - ${atelierHour2}</dd>
+						  <dd>${atelier.heure}</dd>
 						  <dt>Lieu:</dt>
-						  <dd>${atelierPlace}</dd>
+						  <dd>${atelier.lieu}</dd>
 						  <dt>Responsable :</dt>
-						  <dd>${atelierSupervisor}</dd>
+						  <dd>${atelier.responsable}</dd>
 						  <dt>Place disponibles:</dt>
-						  <dd>${atelierAvailable}</dd>
+						  <dd>${atelier.nbPlace}</dd>
 						</dl>
 
 						<button class="btn btn-primary btn-xs" >Modifier les détails de cet atelier</button>
@@ -48,27 +56,7 @@
 						<hr>
 					</div>
 
-
-
-					<div class="one-atelier-list">
-						<dl class="dl-horizontal">
-						  <dt>Nom de l'atelier:</dt>
-						  <dd>${atelierTitle}</dd>
-						  <dt>Description:</dt>
-						  <dd>${atelierDescription}</dd>
-						  <dt>Horaires:</dt>
-						  <dd>${atelierHour1} - ${atelierHour2}</dd>
-						  <dt>Lieu:</dt>
-						  <dd>${atelierPlace}</dd>
-						  <dt>Responsable :</dt>
-						  <dd>${atelierSupervisor}</dd>
-						  <dt>Place disponibles:</dt>
-						  <dd>${atelierAvailable}</dd>
-						</dl>
-						<button class="btn btn-primary btn-xs" >Modifier les détails de cet atelier</button>
-						<button class="btn btn-primary btn-xs">Supprimer cet atelier</button>
-						<button class="btn btn-primary btn-xs">Voir les participants</button><hr>
-					</div>
+				</#list>
 
 				</div>
 

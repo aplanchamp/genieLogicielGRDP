@@ -8,7 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import metier.Atelier;
@@ -40,6 +42,7 @@ public class MainDatabase {
 			createPreparedStatement.executeUpdate();
 			createPreparedStatement.close();
 			connection.commit();
+			System.out.println("Table LABORATOIRE created");
 		} catch (SQLException e) {
 			System.out.println("Exception Message " + e.getLocalizedMessage());
 		} catch (Exception e) {
@@ -63,6 +66,8 @@ public class MainDatabase {
 			createPreparedStatement.executeUpdate();
 			createPreparedStatement.close();
 			connection.commit();
+			System.out.println("Table ATELIERS created");
+
 		} catch (SQLException e) {
 			System.out.println("Exception Message " + e.getLocalizedMessage());
 		} catch (Exception e) {
@@ -72,7 +77,55 @@ public class MainDatabase {
 		}
 
 	}	
+	
+	public static void dropTableLaboratoire() throws SQLException {
+		Connection connection = getDBConnection();
+		PreparedStatement createPreparedStatement = null;
 
+
+		String DropTable = "DROP TABLE LABORATOIRE";
+		try {
+			connection.setAutoCommit(false);
+
+			createPreparedStatement = connection.prepareStatement(DropTable);
+			createPreparedStatement.executeUpdate();
+			createPreparedStatement.close();
+			connection.commit();
+			System.out.println("Drop laboratoire success");
+
+		} catch (SQLException e) {
+			System.out.println("Exception Message " + e.getLocalizedMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			connection.close();
+		}
+
+	}
+	
+	public static void dropTableAteliers() throws SQLException {
+		Connection connection = getDBConnection();
+		PreparedStatement createPreparedStatement = null;
+
+
+		String DropTable = "DROP TABLE ATELIERS";
+		try {
+			connection.setAutoCommit(false);
+
+			createPreparedStatement = connection.prepareStatement(DropTable);
+			createPreparedStatement.executeUpdate();
+			createPreparedStatement.close();
+			connection.commit();
+			System.out.println("Drop ateliers success");
+		} catch (SQLException e) {
+			System.out.println("Exception Message " + e.getLocalizedMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			connection.close();
+		}
+
+	}
 
 
 	public static void addLaboratoire(String name, String email, String phoneNumber, String password) throws SQLException{
@@ -170,20 +223,44 @@ public class MainDatabase {
 		return laboratoire;
 	}
 
-	public static Atelier getAtelierByResponsable(String responsable) throws SQLException {
+	public static List<Atelier> getAtelierByResponsable(String responsable) throws SQLException {
 		Connection connection = getDBConnection();
-		String SelectQuery = "select * from ATELIERS where responsable = responsable";
+		String SelectQuery = "select * from ATELIERS where responsable ="+responsable;
 		PreparedStatement selectPreparedStatement = null;
 		connection.setAutoCommit(false);
 		selectPreparedStatement = connection.prepareStatement(SelectQuery);
-		ResultSet rs = selectPreparedStatement.executeQuery();
-		rs.first();
-		Atelier atelier = new Atelier(rs.getString("name"), rs.getString("description"), rs.getString("lieu"), rs.getString("responsable") , rs.getString("date") , rs.getString("heure"), rs.getInt("nbPlace"));
-		selectPreparedStatement.close();
-		connection.commit();
-		connection.close();
+		System.out.println("Fonction Maindatabase.getAtelierByResponsable");
+		Atelier iteratorAtelier = null;
+		List<Atelier> listAtelier = new ArrayList<Atelier>();
+		System.out.println("GET ATELIER PAR RESPONSABLE2");
 
-		return atelier;
+		
+		try {
+			
+			connection.setAutoCommit(false);
+			selectPreparedStatement = connection.prepareStatement(SelectQuery);
+			ResultSet rs = selectPreparedStatement.executeQuery();
+			while (rs.next()) {
+				iteratorAtelier = new Atelier(rs.getString("name"), rs.getString("description"), rs.getString("lieu"), rs.getString("responsable"), rs.getString("date"),
+						rs.getString("heure"), rs.getInt("nbPlace"));
+				listAtelier.add(iteratorAtelier);
+				System.out.println("Name:"+ iteratorAtelier.getName() + "Responsable: "+ iteratorAtelier.getResponsable());
+				System.out.println(" Name :"+rs.getString("name")+" Responsable : "+rs.getString("responsable"));
+			}
+			selectPreparedStatement.close();
+
+			connection.commit();
+			
+			return listAtelier;
+		} catch (SQLException e) {
+			System.out.println("Exception Message " + e.getLocalizedMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			connection.close();
+		}
+		
+		return null;
 	}
 	
 	public static void printAllLaboratoire() throws SQLException{
@@ -209,6 +286,67 @@ public class MainDatabase {
 		} finally {
 			connection.close();
 		}
+
+	}	
+	
+	public static void printAllAtelier() throws SQLException{
+		Connection connection = getDBConnection();
+		String SelectQuery = "select * from ATELIERS";
+		PreparedStatement selectPreparedStatement = null;
+
+		try {
+			connection.setAutoCommit(false);
+
+			selectPreparedStatement = connection.prepareStatement(SelectQuery);
+			ResultSet rs = selectPreparedStatement.executeQuery();
+			while (rs.next()) {
+				System.out.println(" Name :"+rs.getString("name")+" Responsable : "+rs.getString("responsable"));
+			}
+			selectPreparedStatement.close();
+
+			connection.commit();
+		} catch (SQLException e) {
+			System.out.println("Exception Message " + e.getLocalizedMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			connection.close();
+		}
+
+	}	
+	
+	public static List<Atelier> getAllAtelier() throws SQLException{
+		Connection connection = getDBConnection();
+		String SelectQuery = "select * from ATELIERS"; // where date available
+		PreparedStatement selectPreparedStatement = null;
+		System.out.println("Fonction Maindatabase.getAllAtelier");
+		Atelier iteratorAtelier = null;
+		List<Atelier> listAtelier = new ArrayList<Atelier>();
+		try {
+			
+			connection.setAutoCommit(false);
+			selectPreparedStatement = connection.prepareStatement(SelectQuery);
+			ResultSet rs = selectPreparedStatement.executeQuery();
+			while (rs.next()) {
+				iteratorAtelier = new Atelier(rs.getString("name"), rs.getString("description"), rs.getString("lieu"), rs.getString("responsable"), rs.getString("date"),
+						rs.getString("heure"), rs.getInt("nbPlace"));
+				listAtelier.add(iteratorAtelier);
+				System.out.println("Name:"+ iteratorAtelier.getName() + "Responsable: "+ iteratorAtelier.getResponsable());
+				System.out.println(" Name :"+rs.getString("name")+" Responsable : "+rs.getString("responsable"));
+			}
+			selectPreparedStatement.close();
+
+			connection.commit();
+			
+			return listAtelier;
+		} catch (SQLException e) {
+			System.out.println("Exception Message " + e.getLocalizedMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			connection.close();
+		}
+		return null;
 
 	}	
 

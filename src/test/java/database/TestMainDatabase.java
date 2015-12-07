@@ -12,7 +12,7 @@ import metier.Atelier;
 
 public class TestMainDatabase {
 
-	@Test
+/*	@Test
 	public void test() throws SQLException {
 
 		
@@ -40,6 +40,6 @@ public class TestMainDatabase {
 		assertEquals(MainDatabase.connexionLabo("aplanchamp@gmail.cm", "yoo"),false);
 
 
-	}
+	}*/
 
 }
