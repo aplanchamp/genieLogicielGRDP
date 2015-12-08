@@ -20,9 +20,23 @@ public class AccueilServlet extends AbstractServlet {
 	        System.out.println(request.queryParams("userConnect"));
 	        System.out.println(request.queryParams("passwordConnect"));
 	       
-	        MainDatabase.createTableLaboratoire();
-	        MainDatabase.addLaboratoire(request.queryParams("name"),request.queryParams("email"),request.queryParams("phone"),request.queryParams("password"));
-	        MainDatabase.printAllLaboratoire();
+	       MainDatabase.createTableLaboratoire();
+	     // MainDatabase.printAllLaboratoire();
+	        if (!request.queryParams("name").isEmpty())
+	        {
+	    		//   MainDatabase.addLaboratoire(request.queryParams("name"),request.queryParams("email"),request.queryParams("phone"),request.queryParams("password"));
+	    		//   MainDatabase.printAllLaboratoire();
+	        }
+	       if (!request.queryParams("userConnect").isEmpty())
+	    		   {
+	    	   MainDatabase.connexionLabo(request.queryParams("userConnect"),request.queryParams("passwordConnect"));
+	    	  // return new ModelAndView(attributes, "accueil.ftl");
+	    		   }
+	    
+	    		   
+	       /*
+	        
+	        
 	        //return new ModelAndView(attributes, "accueil.ftl");
 	        
 	         if(request.session().isNew() ){
@@ -44,7 +58,7 @@ public class AccueilServlet extends AbstractServlet {
 	        	
 	        }
 	        
-	       
+	       */
 		}
 		else{
 			Map<String, Object> attributes = new HashMap<>();
@@ -53,8 +67,10 @@ public class AccueilServlet extends AbstractServlet {
 	        return new ModelAndView(attributes, "accueil.ftl");
 
 		}
-		
-		
+		Map<String, Object> attributes = new HashMap<>();
+        attributes.put("header", "titi");
+        attributes.put("user", "coucou");   
+		return new ModelAndView(attributes, "accueil.ftl");
 	}
 
 }

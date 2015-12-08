@@ -222,27 +222,32 @@ public static boolean connexionLabo(String mail, String password) throws SQLExce
 	selectPreparedStatement = connection.prepareStatement(SelectQuery);
 	ResultSet rs = selectPreparedStatement.executeQuery();
 	rs.first();
-	System.out.println("mail :" + rs.getString("mail"));
-
+	System.out.println("mail :" + rs.getString("mail") + " "+ passwordcrypte.get(password));
+	rs.getString("password");
 	// on regarde dans la table de hashage
-	if (passwordcrypte.get(password) != null){
-	if (rs.getString("password").equals(passwordcrypte.get(password)))
+	if ( !rs.wasNull())
+	{
+	if (passwordcrypte.get(password) != null && rs.getString("password").equals(passwordcrypte.get(password)))
 	{
 		// connexion possible
+		System.out.println("connecte");
 		return true;
 	}
+	
 	else {
 		//mauvais mot de passe
+		System.out.println("connecte pas");
 		return false;
 	}
 	}
-	else {
-		// pas d'adresse mail
-		return false;
+	else{
+	System.out.println("vide");
+	return false;
+	}	
 	}
 	
 	
-}
+
 
 	private static Connection getDBConnection() {
 		Connection dbConnection = null;
@@ -261,5 +266,3 @@ public static boolean connexionLabo(String mail, String password) throws SQLExce
 		return dbConnection;
 	}
 }
-
-
