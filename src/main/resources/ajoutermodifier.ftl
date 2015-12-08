@@ -26,9 +26,13 @@
 					</div>
 					<div class="input-group col-md-8">
 						<div class="input-group bootstrap-timepicker timepicker">
-						            <input id="timepicker1" type="text" name="hour_atelier" class="form-control input-small">
+						            <input id="timepicker1" type="text" name="hour1_atelier" class="form-control input-small">
+						            <input id="timepicker1" type="text" name="hour2_atelier" class="form-control input-small">
 						            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 						</div>
+					</div>
+					<div class="input-group col-md-8">
+						<input type="text" class="form-control" placeholder="Date de l'atelier" aria-describedby="basic-addon1" name="date_atelier">
 					</div>
 					<div class="input-group col-md-8">
 						<input type="text" class="form-control" placeholder="Lieu de l'atelier" aria-describedby="basic-addon1" name="lieu_atelier">
@@ -37,7 +41,7 @@
 						<input type="text" class="form-control" placeholder="Responsable" aria-describedby="basic-addon1" name="resp_atelier">
 					</div>
 					<div class="input-group col-md-8">
-						<input type="text" class="form-control" placeholder="Place disponibles" aria-describedby="basic-addon1" name="avail_atelier">
+						<input type="number" class="form-control" placeholder="Place disponibles" aria-describedby="basic-addon1" name="avail_atelier">
 					</div>
 
 					<div class="input-group col-md-8">

@@ -31,10 +31,10 @@ public class TestMainDatabase {
 		MainDatabase.printAllLaboratoire();
 		
 		Laboratoire myLab = MainDatabase.getLaboratoireByName("aude");
-		Atelier myAtelier = MainDatabase.getAtelierByResponsable("aude");
+		//Atelier myAtelier = MainDatabase.getAtelierByResponsable("aude");
 
 		
-		assertEquals(myAtelier, atelierVerify);
+		//assertEquals(myAtelier, atelierVerify);
 		assertEquals(MainDatabase.connexionLabo("aplanchamp@gmail.com", "yo"),true);
 		assertEquals(MainDatabase.connexionLabo("aplanchamp@gmail.com", "yoo"),false);
 		assertEquals(MainDatabase.connexionLabo("aplal.cm", "yoooo"),false);
