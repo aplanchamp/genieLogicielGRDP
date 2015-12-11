@@ -37,7 +37,7 @@ public class TestMainDatabase {
 		//assertEquals(myAtelier, atelierVerify);
 		assertEquals(MainDatabase.connexionLabo("aplanchamp@gmail.com", "yo"),true);
 		assertEquals(MainDatabase.connexionLabo("aplanchamp@gmail.com", "yoo"),false);
-		assertEquals(MainDatabase.connexionLabo("aplal.cm", "yoooo"),false);
+		assertEquals(MainDatabase.connexionLabo("aplal.cm", "yoo"),false);
 
 
 	}

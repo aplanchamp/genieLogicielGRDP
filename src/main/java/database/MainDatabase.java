@@ -79,7 +79,7 @@ public class MainDatabase {
 		}
 
 	}	
-	
+
 	public static void dropTableLaboratoire() throws SQLException {
 		Connection connection = getDBConnection();
 		PreparedStatement createPreparedStatement = null;
@@ -104,7 +104,7 @@ public class MainDatabase {
 		}
 
 	}
-	
+
 	public static void dropTableAteliers() throws SQLException {
 		Connection connection = getDBConnection();
 		PreparedStatement createPreparedStatement = null;
@@ -139,7 +139,7 @@ public class MainDatabase {
 		try{ MessageDigest md = MessageDigest.getInstance("MD5");
 		md.update(password2.getBytes());
 		byte byteData[] = md.digest();
-		
+
 
 		//convert the byte to hex format method 1
 		StringBuffer sb = new StringBuffer();
@@ -147,7 +147,7 @@ public class MainDatabase {
 			sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
 		}
 		passwordcrypte.put(password,sb.toString());
-		
+
 		connection.setAutoCommit(false);
 
 		insertPreparedStatement = connection.prepareStatement(InsertQuery);
@@ -202,7 +202,7 @@ public class MainDatabase {
 		} finally {
 			connection.close();
 		}
-		
+
 	}
 
 	public static Laboratoire getLaboratoireByName(String name) throws SQLException {
@@ -226,7 +226,7 @@ public class MainDatabase {
 	}
 
 
-	
+
 	public static void printAllLaboratoire() throws SQLException{
 		Connection connection = getDBConnection();
 		String SelectQuery = "select * from LABORATOIRE";
@@ -252,7 +252,7 @@ public class MainDatabase {
 		}
 
 	}	
-	
+
 	public static void printAllAtelier() throws SQLException{
 		Connection connection = getDBConnection();
 		String SelectQuery = "select * from ATELIERS";
@@ -278,7 +278,7 @@ public class MainDatabase {
 		}
 
 	}	
-	
+
 	public static List<Atelier> getAtelierByResponsable(String responsable) throws SQLException {
 		Connection connection = getDBConnection();
 		String SelectQuery = "select * from ATELIERS where responsable = \'"+responsable+"\' ";
@@ -290,7 +290,7 @@ public class MainDatabase {
 		Atelier iteratorAtelier = null;
 		List<Atelier> listAtelier = new ArrayList<Atelier>();
 
-		
+
 		try {
 			connection.setAutoCommit(false);
 			selectPreparedStatement = connection.prepareStatement(SelectQuery);
@@ -305,7 +305,7 @@ public class MainDatabase {
 			selectPreparedStatement.close();
 
 			connection.commit();
-			
+
 			return listAtelier;
 		} catch (SQLException e) {
 			System.out.println("Exception Message " + e.getLocalizedMessage());
@@ -319,10 +319,10 @@ public class MainDatabase {
 			attributes.put("ateliers",listAtelier);
 			connection.close();
 		}
-		
+
 		return null;
 	}
-	
+
 	public static List<Atelier> getAllAtelier() throws SQLException{
 		Connection connection = getDBConnection();
 		String SelectQuery = "select * from ATELIERS"; // where date available
@@ -331,7 +331,7 @@ public class MainDatabase {
 		Atelier iteratorAtelier = null;
 		List<Atelier> listAtelier = new ArrayList<Atelier>();
 		try {
-			
+
 			connection.setAutoCommit(false);
 			selectPreparedStatement = connection.prepareStatement(SelectQuery);
 			ResultSet rs = selectPreparedStatement.executeQuery();
@@ -345,7 +345,7 @@ public class MainDatabase {
 			selectPreparedStatement.close();
 
 			connection.commit();
-			
+
 			return listAtelier;
 		} catch (SQLException e) {
 			System.out.println("Exception Message " + e.getLocalizedMessage());
@@ -359,40 +359,40 @@ public class MainDatabase {
 	}	
 
 
-public static boolean connexionLabo(String mail, String password) throws SQLException{
-// on recupere le mot de passe	
-	Connection connection = getDBConnection();
-	String SelectQuery = "select* from LABORATOIRE WHERE mail = mail";
-	PreparedStatement selectPreparedStatement = null;
-	connection.setAutoCommit(false);
-	selectPreparedStatement = connection.prepareStatement(SelectQuery);
-	ResultSet rs = selectPreparedStatement.executeQuery();
-	rs.first();
-	System.out.println("mail :" + rs.getString("mail") + " "+ passwordcrypte.get(password));
-	rs.getString("password");
-	// on regarde dans la table de hashage
-	if ( !rs.wasNull())
-	{
-	if (passwordcrypte.get(password) != null && rs.getString("password").equals(passwordcrypte.get(password)))
-	{
-		// connexion possible
-		System.out.println("connecte");
-		return true;
+	public static boolean connexionLabo(String mail, String password) throws SQLException{
+		// on recupere le mot de passe	
+		Connection connection = getDBConnection();
+		String SelectQuery = "select* from LABORATOIRE WHERE mail = mail";
+		PreparedStatement selectPreparedStatement = null;
+		connection.setAutoCommit(false);
+		selectPreparedStatement = connection.prepareStatement(SelectQuery);
+		ResultSet rs = selectPreparedStatement.executeQuery();
+		rs.first();
+		System.out.println("mail :" + rs.getString("mail"));
+
+		// on regarde dans la table de hashage
+		if (passwordcrypte.get(password) != null){
+		if (rs.getString("password").equals(passwordcrypte.get(password)))
+		{
+			// connexion possible
+			System.out.println("connexion ok");
+			return true;
+		}
+		else {
+			//mauvais mot de passe
+			System.out.println("mauvais mot de passe");
+			return false;
+		}
+		}
+		else {
+			// pas d'adresse mail
+			System.out.println("adresse mail non enregistré");
+			return false;
+		}
+		
 	}
-	
-	else {
-		//mauvais mot de passe
-		System.out.println("connecte pas");
-		return false;
-	}
-	}
-	else{
-	System.out.println("vide");
-	return false;
-	}	
-	}
-	
-	
+
+
 
 
 	private static Connection getDBConnection() {
