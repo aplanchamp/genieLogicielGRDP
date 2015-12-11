@@ -44,12 +44,7 @@ public class TestServletAcceuil {
 		
 		BufferedReader rd = new BufferedReader(new InputStreamReader(con.getInputStream()));
 		
-		String line = rd.readLine();
-//		while ((line = rd.readLine()) != null) {
-//			result.append(line);
-//			result.append("\n");
-//		}
-		
+		String line = rd.readLine();	
 		rd.close();
 
 		String content = new Scanner(new File("src/main/resources/accueil.ftl")).useDelimiter("\n").next();	
