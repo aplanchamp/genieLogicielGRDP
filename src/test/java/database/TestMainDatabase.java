@@ -34,10 +34,12 @@ public class TestMainDatabase {
 		MainDatabase.updateAtelier("nomAtelier", "nouveauNom", "coucou", "paris", "aude", "12/08/2015", "12:30", 40);
 		Laboratoire myLab = MainDatabase.getLaboratoireByName("aude");
 		MainDatabase.printAllAtelier();
+		//Atelier myAtelier = MainDatabase.getAtelierByName("nouveauNom");
 		List<Atelier> myAteliers = MainDatabase.getAtelierByResponsable("aude");
 
 		
 		assertEquals(myAteliers.get(0), atelierVerify);
+		//assertEquals(myAtelier, atelierVerify);
 		//assertEquals(MainDatabase.connexionLabo("aplanchamp@gmail.com", "yo"),true);
 		//assertEquals(MainDatabase.connexionLabo("aplanchamp@gmail.com", "yoo"),false);
 		//assertEquals(MainDatabase.connexionLabo("aplal.cm", "yoo"),false);

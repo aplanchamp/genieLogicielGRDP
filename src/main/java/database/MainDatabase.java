@@ -343,6 +343,39 @@ public class MainDatabase {
 
 		return null;
 	}
+	
+	public static Atelier getAtelierByName(String name) throws SQLException {
+		Connection connection = getDBConnection();
+		String SelectQuery = "select * from ATELIERS where name = \'"+name+"\' ";
+		System.out.println(SelectQuery);
+		PreparedStatement selectPreparedStatement = null;
+		connection.setAutoCommit(false);
+		selectPreparedStatement = connection.prepareStatement(SelectQuery); // Exception handled - no table Ateliers created yet
+		
+
+		try {
+			connection.setAutoCommit(false);
+			selectPreparedStatement = connection.prepareStatement(SelectQuery);
+			ResultSet rs = selectPreparedStatement.executeQuery();
+			
+			Atelier myAtelier = new Atelier(rs.getString("name"), rs.getString("description"), rs.getString("lieu"), rs.getString("responsable"), rs.getString("date"),
+					rs.getString("heure"), rs.getInt("nbPlace"));
+			
+			selectPreparedStatement.close();
+			connection.commit();
+
+			return myAtelier;
+		} catch (SQLException e) {
+			System.out.println("Exception Message " + e.getLocalizedMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			connection.close();
+		}
+
+		return null;
+	}
+	
 
 	public static List<Atelier> getAllAtelier() throws SQLException{
 		Connection connection = getDBConnection();
