@@ -62,17 +62,23 @@ public class DetailsAtelierServlet extends AbstractServlet{
 			// Un visiteur veut ajouter un atelier depuis l'uri /ajouter
 			// Ici, les paramètres doivent être rentrés dans la base de données, puis une redirection est faite vers la page laboratoire 
 			// pour visualiser ses ateliers
-			
-			// Création de la table ATELIER
-			MainDatabase.createTableAtelier();
-			
-			// Ajout d'un atelier par le laboratoire (variable de session)
-			MainDatabase.addAtelier(req.queryParams("name_atelier"), req.queryParams("desc_atelier"), req.queryParams("lieu_atelier"), 
-					req.queryParams("resp_atelier"), req.queryParams("date_atelier"), "10h", Integer.parseInt(req.queryParams("avail_atelier")));
-			MainDatabase.printAllAtelier();
-			
-			res.redirect("/laboratoire");
-	        return new ModelAndView(attributes, "errorRedirect.ftl");
+			try{
+				// Création de la table ATELIER
+				MainDatabase.createTableAtelier();
+				
+				// Ajout d'un atelier par le laboratoire (variable de session)
+				MainDatabase.addAtelier(req.queryParams("name_atelier"), req.queryParams("desc_atelier"), req.queryParams("lieu_atelier"), 
+						req.queryParams("resp_atelier"), req.queryParams("date_atelier"), "10h", Integer.parseInt(req.queryParams("avail_atelier")));
+				MainDatabase.printAllAtelier();
+				
+				res.redirect("/laboratoire");
+		        return new ModelAndView(attributes, "errorRedirect.ftl");
+			}
+			catch(Exception e){
+				System.out.println("Exception handled - POST TO /listAtelier");
+		        return new ModelAndView(attributes, "errorRedirect.ftl");
+
+			}
 		}
 		
 		else if(req.requestMethod() == "POST" && req.uri().toString().equals("/detailsAtelier") ){

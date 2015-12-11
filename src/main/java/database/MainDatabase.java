@@ -15,6 +15,8 @@ import java.util.Map;
 
 import metier.Atelier;
 import metier.Laboratoire;
+import spark.ModelAndView;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -223,45 +225,7 @@ public class MainDatabase {
 		return laboratoire;
 	}
 
-	public static List<Atelier> getAtelierByResponsable(String responsable) throws SQLException {
-		Connection connection = getDBConnection();
-		String SelectQuery = "select * from ATELIERS where responsable ="+responsable;
-		PreparedStatement selectPreparedStatement = null;
-		connection.setAutoCommit(false);
-		selectPreparedStatement = connection.prepareStatement(SelectQuery);
-		System.out.println("Fonction Maindatabase.getAtelierByResponsable");
-		Atelier iteratorAtelier = null;
-		List<Atelier> listAtelier = new ArrayList<Atelier>();
-		System.out.println("GET ATELIER PAR RESPONSABLE2");
 
-		
-		try {
-			
-			connection.setAutoCommit(false);
-			selectPreparedStatement = connection.prepareStatement(SelectQuery);
-			ResultSet rs = selectPreparedStatement.executeQuery();
-			while (rs.next()) {
-				iteratorAtelier = new Atelier(rs.getString("name"), rs.getString("description"), rs.getString("lieu"), rs.getString("responsable"), rs.getString("date"),
-						rs.getString("heure"), rs.getInt("nbPlace"));
-				listAtelier.add(iteratorAtelier);
-				System.out.println("Name:"+ iteratorAtelier.getName() + "Responsable: "+ iteratorAtelier.getResponsable());
-				System.out.println(" Name :"+rs.getString("name")+" Responsable : "+rs.getString("responsable"));
-			}
-			selectPreparedStatement.close();
-
-			connection.commit();
-			
-			return listAtelier;
-		} catch (SQLException e) {
-			System.out.println("Exception Message " + e.getLocalizedMessage());
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			connection.close();
-		}
-		
-		return null;
-	}
 	
 	public static void printAllLaboratoire() throws SQLException{
 		Connection connection = getDBConnection();
@@ -300,7 +264,7 @@ public class MainDatabase {
 			selectPreparedStatement = connection.prepareStatement(SelectQuery);
 			ResultSet rs = selectPreparedStatement.executeQuery();
 			while (rs.next()) {
-				System.out.println(" Name :"+rs.getString("name")+" Responsable : "+rs.getString("responsable"));
+				System.out.println(" Name :"+rs.getString("name")+" Responsable : '"+rs.getString("responsable") + "'" );
 			}
 			selectPreparedStatement.close();
 
@@ -314,6 +278,50 @@ public class MainDatabase {
 		}
 
 	}	
+	
+	public static List<Atelier> getAtelierByResponsable(String responsable) throws SQLException {
+		Connection connection = getDBConnection();
+		String SelectQuery = "select * from ATELIERS where responsable = \'"+responsable+"\' ";
+		System.out.println(SelectQuery);
+		PreparedStatement selectPreparedStatement = null;
+		connection.setAutoCommit(false);
+		selectPreparedStatement = connection.prepareStatement(SelectQuery); // Exception handled - no table Ateliers created yet
+		System.out.println("Fonction Maindatabase.getAtelierByResponsable");
+		Atelier iteratorAtelier = null;
+		List<Atelier> listAtelier = new ArrayList<Atelier>();
+
+		
+		try {
+			connection.setAutoCommit(false);
+			selectPreparedStatement = connection.prepareStatement(SelectQuery);
+			ResultSet rs = selectPreparedStatement.executeQuery();
+			while (rs.next()) {
+				iteratorAtelier = new Atelier(rs.getString("name"), rs.getString("description"), rs.getString("lieu"), rs.getString("responsable"), rs.getString("date"),
+						rs.getString("heure"), rs.getInt("nbPlace"));
+				listAtelier.add(iteratorAtelier);
+				System.out.println("Name:"+ iteratorAtelier.getName() + "Responsable: "+ iteratorAtelier.getResponsable());
+				System.out.println(" Name :"+rs.getString("name")+" Responsable : "+rs.getString("responsable"));
+			}
+			selectPreparedStatement.close();
+
+			connection.commit();
+			
+			return listAtelier;
+		} catch (SQLException e) {
+			System.out.println("Exception Message " + e.getLocalizedMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			Map<String, Object> attributes = new HashMap<>();
+			System.out.println("Exception handled - no table Ateliers created yet");
+			listAtelier = new ArrayList<Atelier>();
+			listAtelier.add(new Atelier("Aucun", "Vous n'avez pas encore enregistré d'atelier", "", "", "", "", 0));
+			attributes.put("ateliers",listAtelier);
+			connection.close();
+		}
+		
+		return null;
+	}
 	
 	public static List<Atelier> getAllAtelier() throws SQLException{
 		Connection connection = getDBConnection();

@@ -29,7 +29,7 @@ public class LaboratoireServlet extends AbstractServlet{
 			
 			try{
 
-			listAtelier = MainDatabase.getAtelierByResponsable("Philou");
+			listAtelier = MainDatabase.getAtelierByResponsable("max");
 			System.out.println("GET ATELIER PAR RESPONSABLE");
 
 			Iterator i = listAtelier.iterator();
@@ -41,7 +41,7 @@ public class LaboratoireServlet extends AbstractServlet{
 	        return new ModelAndView(attributes, "laboratoire.ftl");
 			}
 			catch(Exception e){
-				System.out.println("Exception handled - no table Ateliers created yet");
+				//System.out.println("Exception handled - no table Ateliers created yet");
 				listAtelier = new ArrayList<Atelier>();
 				listAtelier.add(new Atelier("Aucun", "Vous n'avez pas encore enregistré d'atelier", "", "", "", "", 0));
 				attributes.put("ateliers",listAtelier);
