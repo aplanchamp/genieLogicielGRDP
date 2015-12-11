@@ -128,16 +128,16 @@ public class MainDatabase {
 		}
 
 	}
+	
 
 
 	public static void addLaboratoire(String name, String email, String phoneNumber, String password) throws SQLException{
 		Connection connection = getDBConnection();
 		String InsertQuery = "INSERT INTO LABORATOIRE" + "(name, mail, phoneNumber, password) values" + "(?,?,?,?)";
 		PreparedStatement insertPreparedStatement = null;
-		String password2 = "123456";
 
 		try{ MessageDigest md = MessageDigest.getInstance("MD5");
-		md.update(password2.getBytes());
+		md.update(password.getBytes());
 		byte byteData[] = md.digest();
 
 
@@ -204,12 +204,33 @@ public class MainDatabase {
 		}
 
 	}
+	
+	public static void updateAtelier(String nameBase, String name, String description, String lieu, String responsable, String date, String heure,
+			int nbPlace) throws SQLException{
+		Connection connection = getDBConnection();
+		String updateQuery = "UPDATE ATELIERS SET " + "(name, description, lieu, responsable, date, heure, nbPlace) = " + "(\'"+name+"\', \'"+description+"\', \'"+lieu+"\', \'"+responsable+"\', \'"+date+"\', \'"+heure+"\', \'"+nbPlace+"\')" + "WHERE name = \'"+nameBase+"\'";
+		PreparedStatement updatePreparedStatement = null;
+
+		try {
+			connection.setAutoCommit(false);
+
+			updatePreparedStatement = connection.prepareStatement(updateQuery);
+			updatePreparedStatement.executeUpdate();
+			connection.commit();
+		} catch (SQLException e) {
+			System.out.println("Exception Message " + e.getLocalizedMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			connection.close();
+		}
+
+	}
 
 	public static Laboratoire getLaboratoireByName(String name) throws SQLException {
 		Connection connection = getDBConnection();
 		Laboratoire laboratoire;
-		String SelectQuery = "select * from LABORATOIRE WHERE name = name";
-
+		String SelectQuery = "select * from LABORATOIRE WHERE name = \'"+name+"\' ";
 		PreparedStatement selectPreparedStatement = null;
 		connection.setAutoCommit(false);
 		selectPreparedStatement = connection.prepareStatement(SelectQuery);
@@ -362,7 +383,7 @@ public class MainDatabase {
 	public static boolean connexionLabo(String mail, String password) throws SQLException{
 		// on recupere le mot de passe	
 		Connection connection = getDBConnection();
-		String SelectQuery = "select* from LABORATOIRE WHERE mail = mail";
+		String SelectQuery = "select * from LABORATOIRE WHERE mail = mail";
 		PreparedStatement selectPreparedStatement = null;
 		connection.setAutoCommit(false);
 		selectPreparedStatement = connection.prepareStatement(SelectQuery);
