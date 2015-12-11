@@ -16,7 +16,7 @@ public class DetailsAtelierServlet extends AbstractServlet{
 
 	@Override
 	public ModelAndView handle(Request req, Response res) throws Exception {
-		if(req.requestMethod() == "GET"  && req.uri().toString().equals("/detailsAtelier") ){
+		if(req.requestMethod() == "GET"  && req.uri().toString().equals("/detailsAtelier") && req.queryParams("param")!= null){
 			// Récupération du paramètre contenant le nom de l'atelier supposé unique
 			String nameAtelier = req.queryParams("param");
 			
@@ -43,8 +43,8 @@ public class DetailsAtelierServlet extends AbstractServlet{
 	        return new ModelAndView(attributes, "detailsAtelierSubmit.ftl");
 		}
 		else {
-			System.out.println("tata");
-			return null;
+			Map<String, Object> attributes = new HashMap<>();
+			return new ModelAndView(attributes, "errorRedirect.ftl");
 		}
 	}
 }
