@@ -3,7 +3,6 @@ package servlet;
 import java.util.HashMap;
 import java.util.Map;
 
-import database.MainDatabase;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
@@ -16,49 +15,17 @@ public class AccueilServlet extends AbstractServlet {
 			Map<String, Object> attributes = new HashMap<>();
 	        attributes.put("header", "tata");
 	        attributes.put("user", "coucou");
-	        attributes.put("laboName","titi");
+	        
+	        System.out.println(request.queryParams("name"));
+	        System.out.println(request.queryParams("email"));
+	        System.out.println(request.queryParams("phone"));
+	        System.out.println(request.queryParams("password"));
 	        System.out.println(request.queryParams("userConnect"));
 	        System.out.println(request.queryParams("passwordConnect"));
+	        response.redirect("/laboratoire");
+	        return new ModelAndView(attributes, "errorRedirect.ftl");
+	        
 	       
-	       MainDatabase.createTableLaboratoire();
-	     // MainDatabase.printAllLaboratoire();
-	        if (!request.queryParams("name").isEmpty())
-	        {
-	    		//   MainDatabase.addLaboratoire(request.queryParams("name"),request.queryParams("email"),request.queryParams("phone"),request.queryParams("password"));
-	    		//   MainDatabase.printAllLaboratoire();
-	        }
-	       if (!request.queryParams("userConnect").isEmpty())
-	    		   {
-	    	   MainDatabase.connexionLabo(request.queryParams("userConnect"),request.queryParams("passwordConnect"));
-	    	  // return new ModelAndView(attributes, "accueil.ftl");
-	    		   }
-	    
-	    		   
-	       /*
-	        
-	        
-	        //return new ModelAndView(attributes, "accueil.ftl");
-	        
-	         if(request.session().isNew() ){
-	        	
-	        	request.session().attribute("userSession", request.queryParams("userConnect"));
-	        	request.session().attribute("passwordSession", request.queryParams("passwordConnect"));
-		        return new ModelAndView(attributes, "accueil.ftl");
-
-	        	
-	        }
-	        
-	       else {
-	        	if(request.session().attribute("userSession").equals(request.queryParams("userConnect")) && request.session().attribute("passwordSession").equals(request.queryParams("passwordConnect"))){
-	        	    return new ModelAndView(attributes, "accueil.ftl");	
-	        	}
-	        	else {
-	        		return new ModelAndView(attributes, "accueil.ftl");
-	        	}
-	        	
-	        }
-	        
-	       */
 		}
 		else{
 			Map<String, Object> attributes = new HashMap<>();
@@ -67,10 +34,9 @@ public class AccueilServlet extends AbstractServlet {
 	        return new ModelAndView(attributes, "accueil.ftl");
 
 		}
-		Map<String, Object> attributes = new HashMap<>();
-        attributes.put("header", "titi");
-        attributes.put("user", "coucou");   
-		return new ModelAndView(attributes, "accueil.ftl");
 	}
 
 }
+
+ 
+
