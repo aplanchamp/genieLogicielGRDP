@@ -17,6 +17,8 @@ public class DetailsAtelierServlet extends AbstractServlet{
 	@Override
 	public ModelAndView handle(Request req, Response res) throws Exception {
 		if(req.requestMethod() == "GET"  && req.uri().toString().equals("/detailsAtelier") ){
+			// Récupération du paramètre contenant le nom de l'atelier supposé unique
+			System.out.println(req.queryParams("param"));
 			
 			System.out.println("GET /detailsAtelier");
 			Map<String, Object> attributes = new HashMap<>();
