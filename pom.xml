@@ -9,6 +9,30 @@
 	  <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
   
+  <build>
+	  <plugins>
+		    <plugin>
+			    <groupId>org.eluder.coveralls</groupId>
+			    <artifactId>coveralls-maven-plugin</artifactId>
+			    <version>4.1.0</version>
+			    <configuration>
+			        <repoToken>sYEq6HbYz61sFDhCDBRyxoL607U6rf1qa</repoToken>
+			    </configuration>
+			</plugin>
+			<plugin>
+			    <groupId>org.codehaus.mojo</groupId>
+			    <artifactId>cobertura-maven-plugin</artifactId>
+			    <version>2.7</version>
+			    <configuration>
+			        <format>xml</format>
+			        <maxmem>256m</maxmem>
+			        <!-- aggregated reports for multi-module projects -->
+			        <aggregate>true</aggregate>
+			    </configuration>
+			</plugin>
+		</plugins>
+	</build>
+    
   <dependencies>
   	<dependency>
 	    <groupId>com.sparkjava</groupId>

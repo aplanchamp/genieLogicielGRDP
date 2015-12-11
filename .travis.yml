@@ -6,11 +6,8 @@ language: java
 jdk:
     - oraclejdk8
 
-install:
-    - pip install coveralls
-
-after_sucess:
-  coveralls
+after_success:
+  - mvn clean cobertura:cobertura coveralls:report
 
 # Use JDK 8u45. The above line just causes the use of a minor version of Java 8.
 addons:
