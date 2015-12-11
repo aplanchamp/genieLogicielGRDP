@@ -53,6 +53,8 @@
 						<button class="btn btn-primary btn-xs" >Modifier les détails de cet atelier</button>
 						<button class="btn btn-primary btn-xs">Supprimer cet atelier</button>
 						<button class="btn btn-primary btn-xs">Voir les participants</button>
+						<button class="btn btn-primary btn-xs">Participer à l'atelier</button>
+
 						<hr>
 					</div>
 
