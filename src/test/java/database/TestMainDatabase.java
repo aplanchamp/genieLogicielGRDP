@@ -19,13 +19,13 @@ public class TestMainDatabase {
 		
 		DeleteDbFiles.execute("~", "database", true);
 		
-		Atelier atelierVerify = new Atelier("nouveauNom", "coucou", "paris", "aude", "12/08/2015", "12:30", 40);
+		Atelier atelierVerify = new Atelier("nouveauNom", "coucou", "paris", "aude", "12/08/2015", "12:30", "14h30", 40);
 		
 		MainDatabase.createTableLaboratoire();
 		MainDatabase.createTableAtelier();
 		
 		MainDatabase.addLaboratoire("aude", "aplanchamp@gmail.com", "0633504520", "yo");
-		MainDatabase.addAtelier("nomAtelier", "descriptionAtelier", "paris", "aude", "12/08/2015", "12:30", 40);
+		MainDatabase.addAtelier("nomAtelier", "descriptionAtelier", "paris", "aude", "12/08/2015", "12:30", "14h30", 40);
 
 		MainDatabase.printAllLaboratoire();
 		
@@ -33,7 +33,7 @@ public class TestMainDatabase {
 
 		MainDatabase.printAllLaboratoire();
 		MainDatabase.printAllAtelier();
-		MainDatabase.updateAtelier("nomAtelier", "nouveauNom", "coucou", "paris", "aude", "12/08/2015", "12:30", 40);
+		MainDatabase.updateAtelier("nomAtelier", "nouveauNom", "coucou", "paris", "aude", "12/08/2015", "12:30", "14h30",  40);
 		MainDatabase.printAllAtelier();
 		Atelier myAtelierBis = MainDatabase.getAtelierByName("nouveauNom");
 		List<Atelier> myAteliers = MainDatabase.getAtelierByResponsable("aude");
