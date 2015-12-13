@@ -78,8 +78,11 @@ public class Main {
     }
     
 	private static String getAuthenticatedUser(Request request) {
-		System.out.println(request.session().attributes().iterator().next());
-		return request.session().attributes().iterator().next();
+		if(!request.session().attributes().isEmpty()){
+			return request.session().attributes().iterator().next();
+		}
+		else 
+			return null;
 	}
 	
 }
