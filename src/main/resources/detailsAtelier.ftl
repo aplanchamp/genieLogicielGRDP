@@ -52,14 +52,14 @@
 								</dl>
 							</div>
 
-							<form method="POST" action="detailsAtelier"> <!-- adresse de l'URI vers detailsAtelier -->
 										<button class="btn btn-primary btn-xs" type="submit">
 										Supprimer l'atelier
 								</button>
-								<button class="btn btn-primary btn-xs" type="submit">
-										Modifier l'atelier
-								</button>
-								</form>
+									<a href="/modifier?name=${atelier.name}" >
+										<button class="btn btn-primary btn-xs" >
+											Modifier l'atelier
+										</button>
+									</a>
 
 							</div>
    				</div>
