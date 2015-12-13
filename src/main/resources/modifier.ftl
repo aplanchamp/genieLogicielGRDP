@@ -40,13 +40,8 @@
 										<input type="text" class="form-control" placeholder="Description" aria-describedby="basic-addon1" name="desc_atelier" value="${atelier.description}" required>
 									</div>
 									<div class="input-group col-md-8">
-										<!-- <div class="input-group bootstrap-timepicker timepicker">
-																<input placeholder="Heure de début (hh:mm)" maxlength=5 pattern="[0-9]{2}:[0-9]{2}" id="timepicker1" type="text" name="hour1_atelier" class="form-control input-small" required>
-																<input id="timepicker1" type="text" name="hour2_atelier" class="form-control input-small">
-																<span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-										</div> -->
-										<input type="time" class="form-control" placeholder="Date de l'atelier" aria-describedby="basic-addon1" name="hour1_atelier" required>
-										<input type="time" class="form-control" placeholder="Date de l'atelier" aria-describedby="basic-addon1" name="hour2_atelier" required>
+										<input type="time" class="form-control" placeholder="Heure1 de l'atelier" aria-describedby="basic-addon1" name="hour1_atelier" value="${atelier.heure1}" required>
+										<input type="time" class="form-control" placeholder="Heure2 de l'atelier" aria-describedby="basic-addon1" name="hour2_atelier" value="${atelier.heure2}" required>
 									</div>
 									<div class="input-group col-md-8"> <!-- Change to type = date -->
 										<input type="text" class="form-control" placeholder="Date de l'atelier" aria-describedby="basic-addon1" name="date_atelier" value="${atelier.date}" required>
