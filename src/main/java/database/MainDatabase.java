@@ -36,7 +36,6 @@ public class MainDatabase {
 
 		try {
 			connection.setAutoCommit(false);
-
 			createPreparedStatement = connection.prepareStatement(CreateTable);
 			createPreparedStatement.executeUpdate();
 			createPreparedStatement.close();
@@ -124,12 +123,16 @@ public class MainDatabase {
 
 	}
 
-	public static void addLaboratoire(String name, String email, String phoneNumber, String password)
+	public static boolean addLaboratoire(String name, String email, String phoneNumber, String password)
 			throws SQLException {
 		Connection connection = getDBConnection();
 		String InsertQuery = "INSERT INTO LABORATOIRE" + "(name, mail, phoneNumber, password) values" + "(?,?,?,?)";
+		String SelectQueryEmail = "select * from LABORATOIRE WHERE mail = \'" + email + "\' ";
+		String SelectQueryName = "select * from LABORATOIRE WHERE name = \'" + name + "\' ";
 		PreparedStatement insertPreparedStatement = null;
-
+		PreparedStatement selectEmailPreparedStatement = null;
+		PreparedStatement selectNamePreparedStatement = null;
+		boolean tmp = false;
 
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
@@ -145,15 +148,23 @@ public class MainDatabase {
 
 			connection.setAutoCommit(false);
 
-			insertPreparedStatement = connection.prepareStatement(InsertQuery);
-			insertPreparedStatement.setString(1, name);
-			insertPreparedStatement.setString(2, email);
-			insertPreparedStatement.setString(3, phoneNumber);
-			insertPreparedStatement.setString(4, sb.toString());
-			insertPreparedStatement.executeUpdate();
-			insertPreparedStatement.close();
+			selectEmailPreparedStatement = connection.prepareStatement(SelectQueryEmail);
+			ResultSet rsEmail = selectEmailPreparedStatement.executeQuery();
+			selectNamePreparedStatement = connection.prepareStatement(SelectQueryName);
+			ResultSet rsName = selectNamePreparedStatement.executeQuery();
 
-			connection.commit();
+			if (!rsEmail.first() && !rsName.first()) {
+
+				insertPreparedStatement = connection.prepareStatement(InsertQuery);
+				insertPreparedStatement.setString(1, name);
+				insertPreparedStatement.setString(2, email);
+				insertPreparedStatement.setString(3, phoneNumber);
+				insertPreparedStatement.setString(4, sb.toString());
+				insertPreparedStatement.executeUpdate();
+				insertPreparedStatement.close();
+				connection.commit();
+				tmp = true;
+			}
 
 		} catch (NoSuchAlgorithmException x) {
 			System.out.println("NOT OK");
@@ -166,32 +177,41 @@ public class MainDatabase {
 		} finally {
 			connection.close();
 		}
-
+		return tmp;
 	}
 
-	public static void addAtelier(String name, String description, String lieu, String responsable, String date,
+	public static boolean addAtelier(String name, String description, String lieu, String responsable, String date,
 			String heure1, String heure2, int nbPlace) throws SQLException {
 		Connection connection = getDBConnection();
 		String InsertQuery = "INSERT INTO ATELIERS"
 				+ "(name, description, lieu, responsable, date, heure1, heure2, nbPlace) values" + "(?,?,?,?,?,?,?,?)";
+		String SelectQueryName = "select * from ATELIERS WHERE name = \'" + name + "\' ";
 		PreparedStatement insertPreparedStatement = null;
+		PreparedStatement selectNamePreparedStatement = null;
+		boolean tmp = false;
 
 		try {
 			connection.setAutoCommit(false);
 
-			insertPreparedStatement = connection.prepareStatement(InsertQuery);
-			insertPreparedStatement.setString(1, name);
-			insertPreparedStatement.setString(2, description);
-			insertPreparedStatement.setString(3, lieu);
-			insertPreparedStatement.setString(4, responsable);
-			insertPreparedStatement.setString(5, date);
-			insertPreparedStatement.setString(6, heure1);
-			insertPreparedStatement.setString(7, heure2);
-			insertPreparedStatement.setInt(8, nbPlace);
-			insertPreparedStatement.executeUpdate();
-			insertPreparedStatement.close();
+			selectNamePreparedStatement = connection.prepareStatement(SelectQueryName);
+			ResultSet rsName = selectNamePreparedStatement.executeQuery();
 
-			connection.commit();
+			if (!rsName.first()) {
+
+				insertPreparedStatement = connection.prepareStatement(InsertQuery);
+				insertPreparedStatement.setString(1, name);
+				insertPreparedStatement.setString(2, description);
+				insertPreparedStatement.setString(3, lieu);
+				insertPreparedStatement.setString(4, responsable);
+				insertPreparedStatement.setString(5, date);
+				insertPreparedStatement.setString(6, heure1);
+				insertPreparedStatement.setString(7, heure2);
+				insertPreparedStatement.setInt(8, nbPlace);
+				insertPreparedStatement.executeUpdate();
+				insertPreparedStatement.close();
+				connection.commit();
+				tmp = true;
+			}
 		} catch (SQLException e) {
 			System.out.println("Exception Message " + e.getLocalizedMessage());
 		} catch (Exception e) {
@@ -199,15 +219,17 @@ public class MainDatabase {
 		} finally {
 			connection.close();
 		}
+		return tmp;
 
 	}
 
 	public static void updateAtelier(String nameBase, String name, String description, String lieu, String responsable,
 			String date, String heure1, String heure2, int nbPlace) throws SQLException {
 		Connection connection = getDBConnection();
-		String updateQuery = "UPDATE ATELIERS SET " + "(name, description, lieu, responsable, date, heure1, heure2, nbPlace) = "
-				+ "(\'" + name + "\', \'" + description + "\', \'" + lieu + "\', \'" + responsable + "\', \'" + date
-				+ "\', \'" + heure1 + "\', \'" + heure2 + "\',  \'" + nbPlace + "\')" + "WHERE name = \'" + nameBase + "\'";
+		String updateQuery = "UPDATE ATELIERS SET "
+				+ "(name, description, lieu, responsable, date, heure1, heure2, nbPlace) = " + "(\'" + name + "\', \'"
+				+ description + "\', \'" + lieu + "\', \'" + responsable + "\', \'" + date + "\', \'" + heure1
+				+ "\', \'" + heure2 + "\',  \'" + nbPlace + "\')" + "WHERE name = \'" + nameBase + "\'";
 		PreparedStatement updatePreparedStatement = null;
 
 		try {
@@ -284,8 +306,8 @@ public class MainDatabase {
 			selectPreparedStatement = connection.prepareStatement(SelectQuery);
 			ResultSet rs = selectPreparedStatement.executeQuery();
 			while (rs.next()) {
-				System.out.println(
-						" Name :" + rs.getString("name") + " Responsable : '" + rs.getString("responsable") + "'");
+				System.out.println(" Name :" + rs.getString("name") + " Responsable : '" + rs.getString("responsable")
+						+ "'" + rs.getString("heure1") + "'" + rs.getString("heure2") + "'");
 			}
 			selectPreparedStatement.close();
 
@@ -324,7 +346,8 @@ public class MainDatabase {
 			ResultSet rs = selectPreparedStatement.executeQuery();
 			while (rs.next()) {
 				iteratorAtelier = new Atelier(rs.getString("name"), rs.getString("description"), rs.getString("lieu"),
-						rs.getString("responsable"), rs.getString("date"), rs.getString("heure1"), rs.getString("heure2"), rs.getInt("nbPlace"));
+						rs.getString("responsable"), rs.getString("date"), rs.getString("heure1"),
+						rs.getString("heure2"), rs.getInt("nbPlace"));
 				listAtelier.add(iteratorAtelier);
 				System.out.println(
 						"Name:" + iteratorAtelier.getName() + "Responsable: " + iteratorAtelier.getResponsable());
@@ -365,7 +388,8 @@ public class MainDatabase {
 			Atelier myAtelier = null;
 			if (rs.next()) {
 				myAtelier = new Atelier(rs.getString("name"), rs.getString("description"), rs.getString("lieu"),
-						rs.getString("responsable"), rs.getString("date"), rs.getString("heure1"), rs.getString("heure2"), rs.getInt("nbPlace"));
+						rs.getString("responsable"), rs.getString("date"), rs.getString("heure1"),
+						rs.getString("heure2"), rs.getInt("nbPlace"));
 			}
 
 			System.out.println("L'atelier trouvé contient le nom : " + rs.getString("name"));
@@ -398,7 +422,8 @@ public class MainDatabase {
 			ResultSet rs = selectPreparedStatement.executeQuery();
 			while (rs.next()) {
 				iteratorAtelier = new Atelier(rs.getString("name"), rs.getString("description"), rs.getString("lieu"),
-						rs.getString("responsable"), rs.getString("date"), rs.getString("heure1"), rs.getString("heure2"), rs.getInt("nbPlace"));
+						rs.getString("responsable"), rs.getString("date"), rs.getString("heure1"),
+						rs.getString("heure2"), rs.getInt("nbPlace"));
 				listAtelier.add(iteratorAtelier);
 				System.out.println(
 						"Name:" + iteratorAtelier.getName() + "Responsable: " + iteratorAtelier.getResponsable());
@@ -424,43 +449,36 @@ public class MainDatabase {
 		// on recupere le mot de passe
 		Connection connection = getDBConnection();
 
-		String SelectQuery = "select* from LABORATOIRE WHERE mail = \'" +mail+"\' ";
+		String SelectQuery = "select* from LABORATOIRE WHERE mail = \'" + mail + "\' ";
 
 		PreparedStatement selectPreparedStatement = null;
 		connection.setAutoCommit(false);
 		selectPreparedStatement = connection.prepareStatement(SelectQuery);
 		ResultSet rs = selectPreparedStatement.executeQuery();
-		//rs.first();
-		//rs.getString("mail");
-	//	System.out.println("mail :" + rs.getString("mail") + " " + passwordcrypte.get(password));
-		
+		// rs.first();
+		// rs.getString("mail");
+		// System.out.println("mail :" + rs.getString("mail") + " " +
+		// passwordcrypte.get(password));
+
 		// on regarde dans la table de hashage
-		if (rs.first()){
-			
-			//rs.first();
-	//	rs.getString("mail");
-			if (rs.getString("password").equals(passwordcrypte.get(password)))
-			{
+		if (rs.first()) {
+
+			// rs.first();
+			// rs.getString("mail");
+			if (rs.getString("password").equals(passwordcrypte.get(password))) {
 				// connexion possible
 				System.out.println("connexion ok");
 				return true;
-			}
-			else {
-				//mauvais mot de passe
+			} else {
+				// mauvais mot de passe
 				System.out.println("mauvais password");
 				return false;
 			}
-		}
-		else {
-		System.out.println("mauvaise adresse mail");
-		return false;
+		} else {
+			System.out.println("mauvaise adresse mail");
+			return false;
 		}
 	}
-
-
-
-
-	
 
 	private static Connection getDBConnection() {
 		Connection dbConnection = null;

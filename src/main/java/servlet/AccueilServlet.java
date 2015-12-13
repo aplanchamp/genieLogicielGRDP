@@ -17,9 +17,10 @@ public class AccueilServlet extends AbstractServlet {
 			MainDatabase.createTableLaboratoire();
 			if (request.queryParams("name") != null) {
 				// inscription
-				MainDatabase.addLaboratoire(request.queryParams("name"), request.queryParams("email"),
+				boolean tmp = MainDatabase.addLaboratoire(request.queryParams("name"), request.queryParams("email"),
 						request.queryParams("phone"), request.queryParams("password"));
-				response.redirect("/laboratoire");
+				if (tmp == true)
+					response.redirect("/laboratoire");
 
 			}
 
