@@ -46,7 +46,7 @@
 										<input type="time" class="form-control" placeholder="Heure de fin" aria-describedby="basic-addon1" name="hour2_atelier" required>
 									</div>
 									<div class="input-group col-md-8"> <!-- Change to type = date -->
-										<input type="text" class="form-control" placeholder="Date de l'atelier" aria-describedby="basic-addon1" name="date_atelier" required>
+										<input type="text" class="form-control" placeholder="xx/xx/xxxx" aria-describedby="basic-addon1" name="date_atelier" pattern="[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]" required>
 									</div>
 									<div class="input-group col-md-8">
 										<input type="text" class="form-control" placeholder="Lieu de l'atelier" aria-describedby="basic-addon1" name="lieu_atelier" required>

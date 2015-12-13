@@ -50,6 +50,8 @@
 										  <dd>${atelier.name}</dd>
 										  <dt>Description:</dt>
 										  <dd>${atelier.description}</dd>
+										  <dt>Date atelier:</dt>
+										  <dd>${atelier.date}</dd>
 										  <dt>Heure de début:</dt>
 										  <dd>${atelier.heure1}</dd>
 											<dt>Heure de fin:</dt>

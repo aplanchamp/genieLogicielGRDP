@@ -44,7 +44,7 @@
 										<input type="time" class="form-control" placeholder="Heure2 de l'atelier" aria-describedby="basic-addon1" name="hour2_atelier" value="${atelier.heure2}" required>
 									</div>
 									<div class="input-group col-md-8"> <!-- Change to type = date -->
-										<input type="text" class="form-control" placeholder="Date de l'atelier" aria-describedby="basic-addon1" name="date_atelier" value="${atelier.date}" required>
+										<input type="text" class="form-control" placeholder="xx/xx/xxxx" aria-describedby="basic-addon1" name="date_atelier" value="${atelier.date}" pattern="[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]" required>
 									</div>
 									<div class="input-group col-md-8">
 										<input type="text" class="form-control" placeholder="Lieu de l'atelier" aria-describedby="basic-addon1" name="lieu_atelier" value="${atelier.lieu}" required>
