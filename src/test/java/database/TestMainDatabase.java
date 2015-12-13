@@ -38,7 +38,7 @@ public class TestMainDatabase {
 		Atelier myAtelierBis = MainDatabase.getAtelierByName("nouveauNom");
 		List<Atelier> myAteliers = MainDatabase.getAtelierByResponsable("aude");
 
-
+		MainDatabase.deleteAtelierByName("nouveauNom");
 		
 		assertEquals(myAteliers.get(0), atelierVerify);
 		assertEquals(myAtelierBis, atelierVerify);

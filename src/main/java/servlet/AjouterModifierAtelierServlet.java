@@ -32,6 +32,19 @@ public class AjouterModifierAtelierServlet extends AbstractServlet {
 
 		} 
 		
+		else if (req.requestMethod() == "GET" && req.uri().toString().equals("/delete")  && req.queryParams("name") != null) {
+			// Récupération de l'atelier correspondant au paramètre
+			String nameAtelier = req.queryParams("name");
+			MainDatabase.deleteAtelierByName(nameAtelier);
+			System.out.println("---------------");
+			System.out.println("GET /delete");
+
+			// Ajout de l'objet atelier dans les attributs		
+			res.redirect("/laboratoire");
+			return null;
+
+} 
+		
 		else if (req.requestMethod() == "POST" && req.uri().toString().equals("/modifier")  && req.queryParams("name") != null){
 
 			Map<String, Object> attributes = new HashMap<>();
