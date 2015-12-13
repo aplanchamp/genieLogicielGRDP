@@ -41,7 +41,14 @@ public class AccueilServlet extends AbstractServlet {
 
 			return new ModelAndView(attributes, "errorRedirect.ftl");
 
-		} else {
+		} else if(request.requestMethod() == "GET" && request.queryParams("disconnect") != null) {
+			if(!request.session().attributes().isEmpty()){
+				request.session().removeAttribute(request.session().attributes().iterator().next());
+				response.redirect("/accueil");
+			}
+			return new ModelAndView(null, "accueil.ftl");
+		}
+		else{
 			Map<String, Object> attributes = new HashMap<>();
 			attributes.put("header", "titi");
 			attributes.put("user", "coucou");
