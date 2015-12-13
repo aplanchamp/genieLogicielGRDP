@@ -52,7 +52,7 @@ public class ListAtelierServlet extends AbstractServlet {
 				// Ajout d'un atelier par le laboratoire (variable de session)
 				MainDatabase.addAtelier(req.queryParams("name_atelier"), req.queryParams("desc_atelier"),
 						req.queryParams("lieu_atelier"), req.queryParams("resp_atelier"),
-						req.queryParams("date_atelier"), "10h", Integer.parseInt(req.queryParams("avail_atelier")));
+						req.queryParams("date_atelier"), req.queryParams("hour1_atelier"), req.queryParams("hour2_atelier"), Integer.parseInt(req.queryParams("avail_atelier")));
 				MainDatabase.printAllAtelier();
 
 				res.redirect("/laboratoire");
