@@ -41,7 +41,7 @@ public class AjouterModifierAtelierServlet extends AbstractServlet {
 				// Modification d'un atelier par le laboratoire (variable de session)
 				MainDatabase.updateAtelier(req.queryParams("name"), req.queryParams("name_atelier"), 
 						req.queryParams("desc_atelier"), req.queryParams("lieu_atelier"), req.queryParams("resp_atelier"), 
-						req.queryParams("date_atelier"), req.queryParams("heure1"),req.queryParams("heure2"), Integer.parseInt(req.queryParams("avail_atelier")));
+						req.queryParams("date_atelier"), req.queryParams("hour1_atelier"),req.queryParams("hour2_atelier"), Integer.parseInt(req.queryParams("avail_atelier")));
 				System.out.println("%%%%%%");
 				// Affiche dans la console les atelier présents (pour le test)
 				MainDatabase.printAllAtelier();
