@@ -42,6 +42,13 @@ public class Main {
     	});  
     	
         get("/accueil", new AccueilServlet(),freeEngine);
+        before("/accueil", (req, res) -> {
+			String user = getAuthenticatedUser(req);
+			if(user != null) {
+				res.redirect("/laboratoire");
+				halt(401, "Go away!");
+			}
+		});
         post("/accueil", new AccueilServlet(),freeEngine);
         get("/laboratoire", new LaboratoireServlet(),freeEngine);
 		before("/laboratoire", (req, res) -> {
