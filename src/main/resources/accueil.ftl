@@ -5,6 +5,8 @@
 			Accueil - Circuit Scientifique Bordelais - CNRS
 		</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://circuit-scientifique-bordelais.cnrs.fr/favicon.ico" type="image/x-icon" rel="icon" />
+    <link href="http://circuit-scientifique-bordelais.cnrs.fr/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 		<link rel="stylesheet" type="text/css" href="http://circuit-scientifique-bordelais.cnrs.fr/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="main.css">
 		<link rel="stylesheet" type="text/css" href="http://circuit-scientifique-bordelais.cnrs.fr/css/footer.css" />

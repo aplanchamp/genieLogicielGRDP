@@ -5,6 +5,8 @@
 			Accueil - Circuit Scientifique Bordelais - CNRS
 		</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="http://circuit-scientifique-bordelais.cnrs.fr/favicon.ico" type="image/x-icon" rel="icon" />
+		<link href="http://circuit-scientifique-bordelais.cnrs.fr/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 		<link rel="stylesheet" type="text/css" href="http://circuit-scientifique-bordelais.cnrs.fr/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="main.css">
 		<link rel="stylesheet" type="text/css" href="http://circuit-scientifique-bordelais.cnrs.fr/css/footer.css" />
@@ -31,8 +33,6 @@
         			<@m.filterheader />
 
 							<div class="laboratoire">
-								<a href="/ajouter"><button class="btn btn-success" >Ajouter un nouvel atelier</button></a>
-								<hr>
 								<h2>Mon laboratoire: ${laboName}</h2>
 								<hr>
 								<h2>Liste de mes ateliers: </h2>
@@ -59,6 +59,7 @@
 										<button class="btn btn-primary btn-xs">Supprimer cet atelier</button>
 										<button class="btn btn-primary btn-xs">Voir les participants</button>
 										<hr>
+										<a href="/ajouter"><button class="btn btn-success" >Ajouter un nouvel atelier</button></a>
 									</div>
 								</#list>
 

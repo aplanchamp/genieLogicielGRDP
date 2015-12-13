@@ -5,6 +5,8 @@
 			Accueil - Circuit Scientifique Bordelais - CNRS
 		</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="http://circuit-scientifique-bordelais.cnrs.fr/favicon.ico" type="image/x-icon" rel="icon" />
+		<link href="http://circuit-scientifique-bordelais.cnrs.fr/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 		<link rel="stylesheet" type="text/css" href="http://circuit-scientifique-bordelais.cnrs.fr/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="main.css">
 		<link rel="stylesheet" type="text/css" href="http://circuit-scientifique-bordelais.cnrs.fr/css/footer.css" />
@@ -12,14 +14,12 @@
 		</script>
 		    </head>
         <body>
-
    		<div id="wrap">
 
    			<div class="container" id="main">
    				<div class="row">
    					<div class="col-xs-12 col-lg-2 visible-lg-block" id="sidebar">
    						<a href="/" id="logo">
-
    						</a>
    						<div id="discover">
    							Venez découvrir le monde passionnant de la recherche
@@ -30,8 +30,8 @@
               <#import "header.ftl" as m>
         			<@m.filterheader />
 
-							<div class="register">
-								<h1> Ajouter un Atelier </h1>
+   				<div class="content" id="corpus">
+		 								<h1> Ajouter un Atelier </h1>
 								<form method="POST" action="listAtelier" class="col-md-8">
 									<div class="input-group col-md-8">
 										<input type="text" class="form-control" placeholder="Nom de l'atelier" aria-describedby="basic-addon1" name="name_atelier" required>

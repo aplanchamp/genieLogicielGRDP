@@ -5,6 +5,8 @@
 			Accueil - Circuit Scientifique Bordelais - CNRS
 		</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="http://circuit-scientifique-bordelais.cnrs.fr/favicon.ico" type="image/x-icon" rel="icon" />
+		<link href="http://circuit-scientifique-bordelais.cnrs.fr/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 		<link rel="stylesheet" type="text/css" href="http://circuit-scientifique-bordelais.cnrs.fr/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="main.css">
 		<link rel="stylesheet" type="text/css" href="http://circuit-scientifique-bordelais.cnrs.fr/css/footer.css" />
@@ -56,7 +58,7 @@
 										Modifier l'atelier
 								</button>
 								</form>
-								
+
 							</div>
    				</div>
    			</div>
@@ -101,31 +103,3 @@
    		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
    		<script type="text/javascript" src="http://circuit-scientifique-bordelais.cnrs.fr/js/bootstrap.min.js"></script>    </body>
    </html>
-
-
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Circuit Scientifique Bordelais</title>
-	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="http://getbootstrap.com/examples/starter-template/starter-template.css">
-	<link rel="stylesheet" href="main.css">
-</head>
-	<body>
-	<#import "header.ftl" as m>
-	<@m.filterheader />
-		<div class="page-header">
-			<h1>Circuit Scientifique Bordelais <small>${header}</small></h1>
-		</div>
-		<div class="page-header">
-			<ul class="nav nav-pills">
-				<li role="presentation" class="active"><a href="#">Home</a></li>
-				<li role="presentation"><a href="#">Profile</a></li>
-				<li role="presentation"><a href="#">Messages</a></li>
-			</ul>
-		</div>
-
-
-</body>
-</html>
