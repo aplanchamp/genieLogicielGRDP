@@ -32,7 +32,7 @@
 
    				<div class="content" id="corpus">
 		 								<h1> Ajouter un Atelier </h1>
-								<form method="POST" action="listAtelier" class="col-md-8">
+								<form method="POST" action="ajouter" class="col-md-8">
 									<div class="input-group col-md-8">
 										<input type="text" class="form-control" placeholder="Nom de l'atelier" aria-describedby="basic-addon1" name="name_atelier" required>
 									</div>
@@ -50,9 +50,6 @@
 									</div>
 									<div class="input-group col-md-8">
 										<input type="text" class="form-control" placeholder="Lieu de l'atelier" aria-describedby="basic-addon1" name="lieu_atelier" required>
-									</div>
-									<div class="input-group col-md-8">
-										<input type="text" class="form-control" placeholder="Responsable" aria-describedby="basic-addon1" name="resp_atelier" required>
 									</div>
 									<div class="input-group col-md-8">
 										<input type="number" class="form-control" placeholder="Place disponibles" aria-describedby="basic-addon1" name="avail_atelier" required>

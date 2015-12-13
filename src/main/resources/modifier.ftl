@@ -50,9 +50,6 @@
 										<input type="text" class="form-control" placeholder="Lieu de l'atelier" aria-describedby="basic-addon1" name="lieu_atelier" value="${atelier.lieu}" required>
 									</div>
 									<div class="input-group col-md-8">
-										<input type="text" class="form-control" placeholder="Responsable" aria-describedby="basic-addon1" name="resp_atelier" value="${atelier.responsable}" required>
-									</div>
-									<div class="input-group col-md-8">
 										<input type="number" class="form-control" placeholder="Place disponibles" aria-describedby="basic-addon1" name="avail_atelier" value="${atelier.nbPlace}" required>
 									</div>
 

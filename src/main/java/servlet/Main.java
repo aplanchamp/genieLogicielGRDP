@@ -75,6 +75,7 @@ public class Main {
 			}
 		});
         get("/listAtelier", new ListAtelierServlet(),freeEngine);
+        post("/ajouter", new AjouterModifierAtelierServlet(),freeEngine); // post réalisé depuis la page /ajouter
         post("/listAtelier", new ListAtelierServlet(),freeEngine); // post réalisé depuis la page /ajouter
         post("/modifier", new AjouterModifierAtelierServlet(), freeEngine); // post vers la modification d'atelier
         get("/modifier", new AjouterModifierAtelierServlet(), freeEngine); // post vers la modification d'atelier
