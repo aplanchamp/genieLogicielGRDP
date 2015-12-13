@@ -19,8 +19,11 @@ public class AccueilServlet extends AbstractServlet {
 				// inscription
 				boolean tmp = MainDatabase.addLaboratoire(request.queryParams("name"), request.queryParams("email"),
 						request.queryParams("phone"), request.queryParams("password"));
+
+				request.session(true);
+				request.session().attribute(request.queryParams("name"), request.queryParams("name"));
 				if (tmp == true)
-					response.redirect("/laboratoire");
+				response.redirect("/laboratoire");
 
 			}
 
@@ -28,7 +31,8 @@ public class AccueilServlet extends AbstractServlet {
 				// connexion
 				if (MainDatabase.connexionLabo(request.queryParams("userConnect"),
 						request.queryParams("passwordConnect"))) {
-
+					request.session(true);
+					request.session().attribute(request.queryParams("userConnect"), request.queryParams("userConnect"));
 					// connexion ok
 					response.redirect("/laboratoire");
 				}

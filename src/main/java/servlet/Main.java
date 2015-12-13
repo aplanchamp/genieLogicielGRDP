@@ -17,6 +17,9 @@ import spark.template.freemarker.FreeMarkerEngine;
 
 public class Main {
 	
+	private static final String USER_SESSION_ID = "user";
+
+	
     public static void main(String[] args) throws IOException, SQLException {
     	
     	Configuration config = new Configuration();
@@ -41,12 +44,45 @@ public class Main {
         get("/accueil", new AccueilServlet(),freeEngine);
         post("/accueil", new AccueilServlet(),freeEngine);
         get("/laboratoire", new LaboratoireServlet(),freeEngine);
+		before("/laboratoire", (req, res) -> {
+			String user = getAuthenticatedUser(req);
+			if(user == null) {
+				res.redirect("/accueil");
+				halt(401, "Go away!");
+			}
+		});
         get("/detailsAtelier", new DetailsAtelierServlet(),freeEngine);
+		before("/detailsAtelier", (req, res) -> {
+			String user = getAuthenticatedUser(req);
+			if(user == null) {
+				res.redirect("/accueil");
+				halt(401, "Go away!");
+			}
+		});
         get("/ajouter", new AjouterModifierAtelierServlet(),freeEngine);
+		before("/ajouter", (req, res) -> {
+			String user = getAuthenticatedUser(req);
+			if(user == null) {
+				res.redirect("/accueil");
+				halt(401, "Go away!");
+			}
+		});
         get("/listAtelier", new ListAtelierServlet(),freeEngine);
         post("/listAtelier", new ListAtelierServlet(),freeEngine); // post réalisé depuis la page /ajouter
+        post("/modifier", new AjouterModifierAtelierServlet(), freeEngine); // post vers la modification d'atelier
+        get("/modifier", new AjouterModifierAtelierServlet(), freeEngine); // post vers la modification d'atelier
+
 
         
         
     }
+    
+	private static String getAuthenticatedUser(Request request) {
+		if(!request.session().attributes().isEmpty()){
+			return request.session().attributes().iterator().next();
+		}
+		else 
+			return null;
+	}
+	
 }

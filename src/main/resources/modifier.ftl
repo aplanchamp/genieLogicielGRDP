@@ -22,7 +22,7 @@
    						<a href="/" id="logo">
    						</a>
    						<div id="discover">
-   							Venez découvrir le monde passionnant de la recherche
+   							Venez découvrir le monde passionnant de la recherche 
    						</div>
    					</div>
    					<div class="col-xs-12 col-lg-10">
@@ -31,35 +31,33 @@
         			<@m.filterheader />
 
    				<div class="content" id="corpus">
-		 								<h1> Ajouter un Atelier </h1>
-								<form method="POST" action="listAtelier" class="col-md-8">
+		 								<h1> Modifier un Atelier </h1>
+								<form method="POST" action="modifier?name=${atelier.name}" class="col-md-8">
 									<div class="input-group col-md-8">
-										<input type="text" class="form-control" placeholder="Nom de l'atelier" aria-describedby="basic-addon1" name="name_atelier" required>
+										<input type="text" class="form-control" placeholder="Nom de l'atelier" aria-describedby="basic-addon1" name="name_atelier" value="${atelier.name}" required>
 									</div>
 									<div class="input-group col-md-8">
-										<input type="text" class="form-control" placeholder="Description" aria-describedby="basic-addon1" name="desc_atelier" required>
+										<input type="text" class="form-control" placeholder="Description" aria-describedby="basic-addon1" name="desc_atelier" value="${atelier.description}" required>
 									</div>
 									<div class="input-group col-md-8">
-										<input type="time" class="form-control" placeholder="Heure de début" aria-describedby="basic-addon1" name="hour1_atelier" required>
-									<div class="input-group col-md-8">
-									</div>
-										<input type="time" class="form-control" placeholder="Heure de fin" aria-describedby="basic-addon1" name="hour2_atelier" required>
+										<input type="time" class="form-control" placeholder="Heure1 de l'atelier" aria-describedby="basic-addon1" name="hour1_atelier" value="${atelier.heure1}" required>
+										<input type="time" class="form-control" placeholder="Heure2 de l'atelier" aria-describedby="basic-addon1" name="hour2_atelier" value="${atelier.heure2}" required>
 									</div>
 									<div class="input-group col-md-8"> <!-- Change to type = date -->
-										<input type="text" class="form-control" placeholder="xx/xx/xxxx" aria-describedby="basic-addon1" name="date_atelier" pattern="[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]" required>
+										<input type="text" class="form-control" placeholder="xx/xx/xxxx" aria-describedby="basic-addon1" name="date_atelier" value="${atelier.date}" pattern="[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]" required>
 									</div>
 									<div class="input-group col-md-8">
-										<input type="text" class="form-control" placeholder="Lieu de l'atelier" aria-describedby="basic-addon1" name="lieu_atelier" required>
+										<input type="text" class="form-control" placeholder="Lieu de l'atelier" aria-describedby="basic-addon1" name="lieu_atelier" value="${atelier.lieu}" required>
 									</div>
 									<div class="input-group col-md-8">
-										<input type="text" class="form-control" placeholder="Responsable" aria-describedby="basic-addon1" name="resp_atelier" required>
+										<input type="text" class="form-control" placeholder="Responsable" aria-describedby="basic-addon1" name="resp_atelier" value="${atelier.responsable}" required>
 									</div>
 									<div class="input-group col-md-8">
-										<input type="number" class="form-control" placeholder="Place disponibles" aria-describedby="basic-addon1" name="avail_atelier" required>
+										<input type="number" class="form-control" placeholder="Place disponibles" aria-describedby="basic-addon1" name="avail_atelier" value="${atelier.nbPlace}" required>
 									</div>
 
 									<div class="input-group col-md-8">
-										<input type="submit" class="btn btn-primary btn-lg btn-block" value="Ajouter">
+										<input type="submit" class="btn btn-primary btn-lg btn-block" value="Modifier">
 									</div>
 								</form>
 							</div>
