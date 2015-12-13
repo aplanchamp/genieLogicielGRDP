@@ -29,7 +29,7 @@ public class LaboratoireServlet extends AbstractServlet{
 			
 			try{
 
-			listAtelier = MainDatabase.getAtelierByResponsable("max");
+			listAtelier = MainDatabase.getAtelierByResponsable(req.session().attributes().iterator().next());
 			System.out.println("GET ATELIER PAR RESPONSABLE");
 
 			Iterator i = listAtelier.iterator();
