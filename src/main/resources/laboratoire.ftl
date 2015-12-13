@@ -47,7 +47,7 @@
 						  <dd>${atelier.nbPlace}</dd>
 						</dl>
 
-						<button class="btn btn-primary btn-xs" >Modifier les détails de cet atelier</button>
+						<a href="/detailsAtelier?param=${atelier.name}" ><button class="btn btn-primary btn-xs" >Modifier les détails de cet atelier</button></a>
 						<button class="btn btn-primary btn-xs">Supprimer cet atelier</button>
 						<button class="btn btn-primary btn-xs">Voir les participants</button>
 						<hr>

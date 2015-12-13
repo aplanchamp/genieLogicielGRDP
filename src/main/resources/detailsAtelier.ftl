@@ -25,23 +25,26 @@
 
 			<dl class="dl-horizontal">
 			  <dt>Nom de l'atelier:</dt>
-			  <dd>${atelierTitle}</dd>
+			  <dd>${atelier.name}</dd>
 			  <dt>Description:</dt>
-			  <dd>${atelierDescription}</dd>
+			  <dd>${atelier.description}</dd>
 			  <dt>Horaires:</dt>
-			  <dd>${atelierHour1} - ${atelierHour2}</dd>
+			  <dd>${atelier.heure}</dd>
 			  <dt>Lieu:</dt>
-			  <dd>${atelierPlace}</dd>
+			  <dd>${atelier.lieu}</dd>
 			  <dt>Responsable :</dt>
-			  <dd>${atelierSupervisor}</dd>
+			  <dd>${atelier.responsable}</dd>
 			  <dt>Place disponibles:</dt>
-			  <dd>${atelierAvailable}</dd>
+			  <dd>${atelier.nbPlace}</dd>
 			</dl>
 		</div>
 
 		<form method="POST" action="detailsAtelier"> <!-- adresse de l'URI vers detailsAtelier -->
-        	<button class="btn btn-primary" type="submit">
-  				S'inscrire à l'atelier 
+        	<button class="btn btn-primary btn-xs" type="submit">
+  				Supprimer l'atelier
+			</button>
+			<button class="btn btn-primary btn-xs" type="submit">
+  				Modifier l'atelier
 			</button>
      	</form>
 </body>
