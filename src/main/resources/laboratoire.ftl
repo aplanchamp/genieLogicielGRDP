@@ -33,6 +33,8 @@
         			<@m.filterheader />
 
 							<div class="laboratoire">
+								<a href="/ajouter"><button class="btn btn-success" >Ajouter un nouvel atelier</button></a>
+								<hr>
 								<h2>Mon laboratoire: ${laboName}</h2>
 								<hr>
 								<h2>Liste de mes ateliers: </h2>
@@ -46,7 +48,8 @@
 											<dt>Description:</dt>
 											<dd>${atelier.description}</dd>
 											<dt>Horaires:</dt>
-											<dd>${atelier.heure}</dd>
+											<dd>${atelier.heure1}</dd>
+											<dd>${atelier.heure2}</dd>
 											<dt>Lieu:</dt>
 											<dd>${atelier.lieu}</dd>
 											<dt>Responsable :</dt>
@@ -58,7 +61,6 @@
 										<a href="/detailsAtelier?param=${atelier.name}" ><button class="btn btn-primary btn-xs" >Voir les détails de cet atelier</button></a>
 										<br />
 										<hr>
-										<a href="/ajouter"><button class="btn btn-success" >Ajouter un nouvel atelier</button></a>
 									</div>
 								</#list>
 

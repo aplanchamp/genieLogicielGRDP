@@ -56,7 +56,7 @@ public class MainDatabase {
 		Connection connection = getDBConnection();
 		PreparedStatement createPreparedStatement = null;
 
-		String CreateTable = "CREATE TABLE IF NOT EXISTS ATELIERS(name varchar(255) primary key, description varchar(255) NOT NULL, lieu varchar(255) NOT NULL, responsable varchar(255) NOT NULL, date varchar(255) NOT NULL, heure varchar(255) NOT NULL , nbPlace int(8) NOT NULL)";
+		String CreateTable = "CREATE TABLE IF NOT EXISTS ATELIERS(name varchar(255) primary key, description varchar(255) NOT NULL, lieu varchar(255) NOT NULL, responsable varchar(255) NOT NULL, date varchar(255) NOT NULL, heure1 varchar(255) NOT NULL , heure2 varchar(255) NOT NULL, nbPlace int(8) NOT NULL)";
 
 		try {
 			connection.setAutoCommit(false);
@@ -170,10 +170,10 @@ public class MainDatabase {
 	}
 
 	public static void addAtelier(String name, String description, String lieu, String responsable, String date,
-			String heure, int nbPlace) throws SQLException {
+			String heure1, String heure2, int nbPlace) throws SQLException {
 		Connection connection = getDBConnection();
 		String InsertQuery = "INSERT INTO ATELIERS"
-				+ "(name, description, lieu, responsable, date, heure, nbPlace) values" + "(?,?,?,?,?,?,?)";
+				+ "(name, description, lieu, responsable, date, heure1, heure2, nbPlace) values" + "(?,?,?,?,?,?,?,?)";
 		PreparedStatement insertPreparedStatement = null;
 
 		try {
@@ -185,8 +185,9 @@ public class MainDatabase {
 			insertPreparedStatement.setString(3, lieu);
 			insertPreparedStatement.setString(4, responsable);
 			insertPreparedStatement.setString(5, date);
-			insertPreparedStatement.setString(6, heure);
-			insertPreparedStatement.setInt(7, nbPlace);
+			insertPreparedStatement.setString(6, heure1);
+			insertPreparedStatement.setString(7, heure2);
+			insertPreparedStatement.setInt(8, nbPlace);
 			insertPreparedStatement.executeUpdate();
 			insertPreparedStatement.close();
 
@@ -202,11 +203,11 @@ public class MainDatabase {
 	}
 
 	public static void updateAtelier(String nameBase, String name, String description, String lieu, String responsable,
-			String date, String heure, int nbPlace) throws SQLException {
+			String date, String heure1, String heure2, int nbPlace) throws SQLException {
 		Connection connection = getDBConnection();
-		String updateQuery = "UPDATE ATELIERS SET " + "(name, description, lieu, responsable, date, heure, nbPlace) = "
+		String updateQuery = "UPDATE ATELIERS SET " + "(name, description, lieu, responsable, date, heure1, heure2, nbPlace) = "
 				+ "(\'" + name + "\', \'" + description + "\', \'" + lieu + "\', \'" + responsable + "\', \'" + date
-				+ "\', \'" + heure + "\', \'" + nbPlace + "\')" + "WHERE name = \'" + nameBase + "\'";
+				+ "\', \'" + heure1 + "\', \'" + heure2 + "\',  \'" + nbPlace + "\')" + "WHERE name = \'" + nameBase + "\'";
 		PreparedStatement updatePreparedStatement = null;
 
 		try {
@@ -323,7 +324,7 @@ public class MainDatabase {
 			ResultSet rs = selectPreparedStatement.executeQuery();
 			while (rs.next()) {
 				iteratorAtelier = new Atelier(rs.getString("name"), rs.getString("description"), rs.getString("lieu"),
-						rs.getString("responsable"), rs.getString("date"), rs.getString("heure"), rs.getInt("nbPlace"));
+						rs.getString("responsable"), rs.getString("date"), rs.getString("heure1"), rs.getString("heure2"), rs.getInt("nbPlace"));
 				listAtelier.add(iteratorAtelier);
 				System.out.println(
 						"Name:" + iteratorAtelier.getName() + "Responsable: " + iteratorAtelier.getResponsable());
@@ -340,9 +341,8 @@ public class MainDatabase {
 			e.printStackTrace();
 		} finally {
 			Map<String, Object> attributes = new HashMap<>();
-			System.out.println("Exception handled - no table Ateliers created yet");
 			listAtelier = new ArrayList<Atelier>();
-			listAtelier.add(new Atelier("Aucun", "Vous n'avez pas encore enregistré d'atelier", "", "", "", "", 0));
+			listAtelier.add(new Atelier("Aucun", "Vous n'avez pas encore enregistré d'atelier", "", "", "", "", "", 0));
 			attributes.put("ateliers", listAtelier);
 			connection.close();
 		}
@@ -365,7 +365,7 @@ public class MainDatabase {
 			Atelier myAtelier = null;
 			if (rs.next()) {
 				myAtelier = new Atelier(rs.getString("name"), rs.getString("description"), rs.getString("lieu"),
-						rs.getString("responsable"), rs.getString("date"), rs.getString("heure"), rs.getInt("nbPlace"));
+						rs.getString("responsable"), rs.getString("date"), rs.getString("heure1"), rs.getString("heure2"), rs.getInt("nbPlace"));
 			}
 
 			System.out.println("L'atelier trouvé contient le nom : " + rs.getString("name"));
@@ -398,7 +398,7 @@ public class MainDatabase {
 			ResultSet rs = selectPreparedStatement.executeQuery();
 			while (rs.next()) {
 				iteratorAtelier = new Atelier(rs.getString("name"), rs.getString("description"), rs.getString("lieu"),
-						rs.getString("responsable"), rs.getString("date"), rs.getString("heure"), rs.getInt("nbPlace"));
+						rs.getString("responsable"), rs.getString("date"), rs.getString("heure1"), rs.getString("heure2"), rs.getInt("nbPlace"));
 				listAtelier.add(iteratorAtelier);
 				System.out.println(
 						"Name:" + iteratorAtelier.getName() + "Responsable: " + iteratorAtelier.getResponsable());

@@ -19,40 +19,34 @@ public class TestMainDatabase {
 		
 		DeleteDbFiles.execute("~", "database", true);
 		
-
-	//	Laboratoire labVerify = new Laboratoire("aude", "aplanchamp@gmail.com", "0633504520", "test");
-
-		Atelier atelierVerify = new Atelier("nouveauNom", "coucou", "paris", "aude", "12/08/2015", "12:30", 40);
+		Atelier atelierVerify = new Atelier("nouveauNom", "coucou", "paris", "aude", "12/08/2015", "12:30", "14h30", 40);
 		
 		MainDatabase.createTableLaboratoire();
 		MainDatabase.createTableAtelier();
 		
 		MainDatabase.addLaboratoire("aude", "aplanchamp@gmail.com", "0633504520", "yo");
-		MainDatabase.addAtelier("nomAtelier", "descriptionAtelier", "paris", "aude", "12/08/2015", "12:30", 40);
+		MainDatabase.addAtelier("nomAtelier", "descriptionAtelier", "paris", "aude", "12/08/2015", "12:30", "14h30", 40);
 
-	//	MainDatabase.printAllLaboratoire();
+		MainDatabase.printAllLaboratoire();
 		
-		//Laboratoire myLab = MainDatabase.getLaboratoireByName("aude");
-		//Atelier myAtelier = MainDatabase.getAtelierByResponsable("aude");
+		Laboratoire myLab = MainDatabase.getLaboratoireByName("aude");
 
 		MainDatabase.printAllLaboratoire();
 		MainDatabase.printAllAtelier();
-		MainDatabase.updateAtelier("nomAtelier", "nouveauNom", "coucou", "paris", "aude", "12/08/2015", "12:30", 40);
-		Laboratoire myLab = MainDatabase.getLaboratoireByName("aude");
+		MainDatabase.updateAtelier("nomAtelier", "nouveauNom", "coucou", "paris", "aude", "12/08/2015", "12:30", "14h30",  40);
 		MainDatabase.printAllAtelier();
-		//Atelier myAtelier = MainDatabase.getAtelierByName("nouveauNom");
+		Atelier myAtelierBis = MainDatabase.getAtelierByName("nouveauNom");
 		List<Atelier> myAteliers = MainDatabase.getAtelierByResponsable("aude");
 
 
 		
 		assertEquals(myAteliers.get(0), atelierVerify);
-		//assertEquals(myAtelier, atelierVerify);
-
+		assertEquals(myAtelierBis, atelierVerify);
 		assertEquals(MainDatabase.connexionLabo("aplanchamp@gmail.com", "yo"),true);
 		assertEquals(MainDatabase.connexionLabo("aplanchamp@gmail.com", "yoo"),false);
-		assertEquals(MainDatabase.connexionLabo("aplal.cm", "yojhjjo"),false);
+		assertEquals(MainDatabase.connexionLabo("aplal.cm", "yo"),false);
 
-
+		DeleteDbFiles.execute("~", "database", true);
 
 	}
 

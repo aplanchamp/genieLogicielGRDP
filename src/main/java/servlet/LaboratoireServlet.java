@@ -43,7 +43,7 @@ public class LaboratoireServlet extends AbstractServlet{
 			catch(Exception e){
 				//System.out.println("Exception handled - no table Ateliers created yet");
 				listAtelier = new ArrayList<Atelier>();
-				listAtelier.add(new Atelier("Aucun", "Vous n'avez pas encore enregistré d'atelier", "", "", "", "", 0));
+				listAtelier.add(new Atelier("Aucun", "Vous n'avez pas encore enregistré d'atelier", "", "", "", "", "", 0));
 				attributes.put("ateliers",listAtelier);
 		        return new ModelAndView(attributes, "laboratoire.ftl");
 			}
