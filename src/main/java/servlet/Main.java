@@ -45,6 +45,9 @@ public class Main {
         get("/ajouter", new AjouterModifierAtelierServlet(),freeEngine);
         get("/listAtelier", new ListAtelierServlet(),freeEngine);
         post("/listAtelier", new ListAtelierServlet(),freeEngine); // post réalisé depuis la page /ajouter
+        post("/modifier", new AjouterModifierAtelierServlet(), freeEngine); // post vers la modification d'atelier
+        get("/modifier", new AjouterModifierAtelierServlet(), freeEngine); // post vers la modification d'atelier
+
 
         
         
