@@ -24,7 +24,7 @@ public class LaboratoireServlet extends AbstractServlet{
 			Map<String, Object> attributes = new HashMap<>();
 			List<Atelier> listAtelier = new ArrayList<Atelier>();
 			attributes.put("header", "Laboratoire");
-			attributes.put("laboName", "MonLaboratoireGenial");
+			attributes.put("laboName", req.session().attributes().iterator().next());
 
 			
 			try{

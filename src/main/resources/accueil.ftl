@@ -87,7 +87,29 @@
    	Avant de vous connecter, assurez-vous de bien avoir lu le guide d'aide à l’inscription des enseignants :
    	<a href="http://circuit-scientifique-bordelais.cnrs.fr/files/documents/Guide enseignant VF.pdf">Guide d'aide</a>.</br>
    </p>
-   <form action="/accueil" id="TeacherLoginForm" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div><div class="form-group" style="padding:1.5em 0;"><label for="TeacherEmail" class="col-sm-2 control-label">Adresse email</label><div class="col-sm-10"><input name="data[Teacher][email]" role="form" class="form-control" maxlength="100" type="email" id="TeacherEmail"/></div></div><div class="form-group" style="padding:1.5em 0;"><label for="TeacherPassword" class="col-sm-2 control-label">Mot de passe</label><div class="col-sm-10 required"><input name="data[Teacher][password]" role="form" class="form-control" type="password" id="TeacherPassword" required="required"/></div></div><div class="form-group" style="padding:1.5em 0;"><div class="col-sm-offset-2 col-sm-10"><input  class="btn btn-default" title="Se connecter" type="submit" value="Se connecter"/></div></div></form>						</div>
+   <form action="/accueil" id="TeacherLoginForm" method="post" accept-charset="utf-8">
+     <div style="display:none;">
+       <input type="hidden" name="_method" value="POST"/>
+     </div>
+     <div class="form-group" style="padding:1.5em 0;">
+       <label for="TeacherEmail" class="col-sm-2 control-label">Adresse email</label>
+       <div class="col-sm-10">
+         <input name="userConnect" role="form" class="form-control" maxlength="100" type="email" id="TeacherEmail"/>
+       </div>
+     </div>
+     <div class="form-group" style="padding:1.5em 0;">
+       <label for="TeacherPassword" class="col-sm-2 control-label">Mot de passe</label>
+       <div class="col-sm-10 required">
+         <input name="passwordConnect" role="form" class="form-control" type="password" id="TeacherPassword" required="required"/>
+       </div>
+     </div>
+     <div class="form-group" style="padding:1.5em 0;">
+       <div class="col-sm-offset-2 col-sm-10">
+         <input  class="btn btn-default" title="Se connecter" type="submit" value="Se connecter"/>
+       </div>
+     </div>
+   </form>
+ 						</div>
              	</div>
    				</div>
    			</div>
