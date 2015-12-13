@@ -30,7 +30,7 @@
 					</div>
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1">@</span>
-						<input type="text" class="form-control" placeholder="Password" aria-describedby="basic-addon1" name="password">
+						<input type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1" name="password">
 					</div>
 					<input type="submit" class="btn btn-primary btn-lg btn-block" value="Register">
 				</form>

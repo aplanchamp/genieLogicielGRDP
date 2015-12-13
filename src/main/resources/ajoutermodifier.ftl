@@ -19,29 +19,29 @@
 				<h1> Ajouter un Atelier </h1>
 				<form method="POST" action="listAtelier" class="col-md-8">
 					<div class="input-group col-md-8">
-						<input type="text" class="form-control" placeholder="Nom de l'atelier" aria-describedby="basic-addon1" name="name_atelier">
+						<input type="text" class="form-control" placeholder="Nom de l'atelier" aria-describedby="basic-addon1" name="name_atelier" required>
 					</div>
 					<div class="input-group col-md-8">
-						<input type="text" class="form-control" placeholder="Description" aria-describedby="basic-addon1" name="desc_atelier">
+						<input type="text" class="form-control" placeholder="Description" aria-describedby="basic-addon1" name="desc_atelier" required>
 					</div>
 					<div class="input-group col-md-8">
 						<div class="input-group bootstrap-timepicker timepicker">
-						            <input id="timepicker1" type="text" name="hour1_atelier" class="form-control input-small">
+						            <input placeholder="Heure de début (hh:mm)" maxlength=5 pattern="[0-9]{2}:[0-9]{2}" id="timepicker1" type="text" name="hour1_atelier" class="form-control input-small" required>
 						            <input id="timepicker1" type="text" name="hour2_atelier" class="form-control input-small">
 						            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
 						</div>
 					</div>
-					<div class="input-group col-md-8">
-						<input type="text" class="form-control" placeholder="Date de l'atelier" aria-describedby="basic-addon1" name="date_atelier">
+					<div class="input-group col-md-8"> <!-- Change to type = date -->
+						<input type="text" class="form-control" placeholder="Date de l'atelier" aria-describedby="basic-addon1" name="date_atelier" required>
 					</div>
 					<div class="input-group col-md-8">
-						<input type="text" class="form-control" placeholder="Lieu de l'atelier" aria-describedby="basic-addon1" name="lieu_atelier">
+						<input type="text" class="form-control" placeholder="Lieu de l'atelier" aria-describedby="basic-addon1" name="lieu_atelier" required>
 					</div>
 					<div class="input-group col-md-8">
-						<input type="text" class="form-control" placeholder="Responsable" aria-describedby="basic-addon1" name="resp_atelier">
+						<input type="text" class="form-control" placeholder="Responsable" aria-describedby="basic-addon1" name="resp_atelier" required>
 					</div>
 					<div class="input-group col-md-8">
-						<input type="number" class="form-control" placeholder="Place disponibles" aria-describedby="basic-addon1" name="avail_atelier">
+						<input type="number" class="form-control" placeholder="Place disponibles" aria-describedby="basic-addon1" name="avail_atelier" required>
 					</div>
 
 					<div class="input-group col-md-8">
