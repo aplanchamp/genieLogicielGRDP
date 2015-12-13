@@ -14,7 +14,7 @@
 				 <a href="/laboratoire">Espace Enseignants</a>
 			 </li>
 			 <li>
-				 <a href="/page/faq">FAQ</a>
+				 <a href="/accueil?disconnect">Disconnect</a>
 			 </li>
 		 </ul>
 	 </div>
