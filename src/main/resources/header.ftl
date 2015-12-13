@@ -1,31 +1,50 @@
 <#macro filterheader>
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span> 
-					</button>
-					<a class="navbar-brand" href="/">Laboratoire de Bordeaux</a>
-				</div>
-				<div class="collapse navbar-collapse" id="myNavbar">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="/laboratoire">Home</a></li>
-						<li><a href="/listAtelier">Liste des ateliers</a></li> 
-					</ul>
-					<form method="POST" class="navbar-form navbar-right">
-						<div class="form-group">
-							<input type="text" placeholder="Email" class="form-control" name="userConnect">
-						</div>
-						<div class="form-group">
-							<input type="password" placeholder="Password" class="form-control" name="passwordConnect">
-						</div>
-						<button type="submit" class="btn btn-success">Sign in</button>
-						<button type="submit" class="btn btn-danger">Deconnect</button>
+<div class="navbar hidden-xs" role="navigation">
+ <div class="container-fluid">
+	 <div class="collapse navbar-collapse">
+		 <ul class="nav navbar-nav">
+			 <li class="dropdown">
+				 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Le circuit</a>
+				 <ul class="dropdown-menu" role="menu">
+				 <li><a href="/">Accueil</a></li>
+				 <li><a href="/detailsAtelier">detailsAtelier</a></li>
+				 </ul>
+			 </li>
+			 <li class="secured">
+				 <a href="/laboratoire">Espace Enseignants</a>
+			 </li>
+			 <li>
+				 <a href="/page/faq">FAQ</a>
+			 </li>
+		 </ul>
+	 </div>
+ </div>
+</div>
 
-					</form>
-				</div>
-			</div>
-		</nav>
+<nav class="navbar navbar-inverse visible-xs-block" id="xsmenu">
+ <div class="container">
+	 <div class="navbar-header">
+		 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			 <span class="sr-only">Toggle navigation</span>
+			 <span class="icon-bar"></span>
+			 <span class="icon-bar"></span>
+			 <span class="icon-bar"></span>
+		 </button>
+		 <a class="navbar-brand" href="/">Circuit Scientifique Bordelais</a>
+	 </div>
+	 <div id="navbar" class="collapse navbar-collapse">
+		 <ul class="nav navbar-nav">
+			 <li class="dropdown">
+				 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Le circuit</a>
+				 <ul class="dropdown-menu" role="menu">
+					 <li><a href="/">Accueil</a></li>
+					 <li><a href="/detailsAtelier">detailsAtelier</a></li>
+				 </ul>
+			 </li>
+			 <li class="secured"><a href="/teachers">Espace Enseignants</a></li>
+			 <li><a href="/page/faq">FAQ</a></li>
+		 </ul>
+	 </div><!--/.nav-collapse -->
+ </div>
+</nav>
 </#macro>
