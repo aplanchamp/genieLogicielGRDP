@@ -48,7 +48,8 @@
 											<dt>Description:</dt>
 											<dd>${atelier.description}</dd>
 											<dt>Horaires:</dt>
-											<dd>${atelier.heure}</dd>
+											<dd>${atelier.heure1}</dd>
+											<dd>${atelier.heure2}</dd>
 											<dt>Lieu:</dt>
 											<dd>${atelier.lieu}</dd>
 											<dt>Responsable :</dt>
