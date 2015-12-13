@@ -340,7 +340,6 @@ public class MainDatabase {
 			e.printStackTrace();
 		} finally {
 			Map<String, Object> attributes = new HashMap<>();
-			System.out.println("Exception handled - no table Ateliers created yet");
 			listAtelier = new ArrayList<Atelier>();
 			listAtelier.add(new Atelier("Aucun", "Vous n'avez pas encore enregistré d'atelier", "", "", "", "", 0));
 			attributes.put("ateliers", listAtelier);
