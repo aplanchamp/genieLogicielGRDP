@@ -22,9 +22,7 @@ public class DetailsAtelierServlet extends AbstractServlet{
 			
 			// Récupération de l'objet Atelier
 			Atelier mAtelier = MainDatabase.getAtelierByName(nameAtelier);
-			
-			System.out.println("GET /detailsAtelier");
-			
+						
 			// Ajout de l'objet atelier dans les attributs
 			Map<String, Object> attributes = new HashMap<>();
 			attributes.put("header", "Détails de l'atelier");
@@ -38,8 +36,7 @@ public class DetailsAtelierServlet extends AbstractServlet{
 			// Un visiteur veut s'inscrire à un atelier, il a appuyé sur le bouton d'inscription
 			Map<String, Object> attributes = new HashMap<>();
 			attributes.put("header", "Atelier");
-			attributes.put("user", "coucou");       
-			attributes.put("msg", "T'es bien inscrit à l'atelier");    
+
 	        return new ModelAndView(attributes, "detailsAtelierSubmit.ftl");
 		}
 		else {

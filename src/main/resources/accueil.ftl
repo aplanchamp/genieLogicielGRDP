@@ -44,26 +44,26 @@
      <div class="form-group" style="padding:1.5em 0;">
        <label for="TeacherEmail" class="col-sm-2 control-label">Nom</label>
        <div class="col-sm-10">
-         <input name="name" role="form" class="form-control" maxlength="100" type="text" id="basic-addon1"/>
+         <input placeholder="Nom du laboratoire" name="name" role="form" class="form-control" maxlength="100" type="text" id="basic-addon1"/>
        </div>
      </div>
      <div class="form-group" style="padding:1.5em 0;">
        <label for="TeacherEmail" class="col-sm-2 control-label">Adresse email</label>
        <div class="col-sm-10">
-         <input name="email" role="form" class="form-control" maxlength="100" type="email" id="basic-addon1"/>
+         <input placeholder="E-mail" name="email" role="form" class="form-control" maxlength="100" type="email" id="basic-addon1"/>
        </div>
      </div>
      <div class="form-group" style="padding:1.5em 0;">
        <label for="TeacherEmail" class="col-sm-2 control-label">Téléphone</label>
        <div class="col-sm-10">
-         <input name="phone" role="form" class="form-control" maxlength="100" type="text" id="basic-addon1"/>
+         <input placeholder="XXXXXXXXXX" pattern = "[0-9]{10}" name="phone" role="form" class="form-control" maxlength="100" type="text" id="basic-addon1"/>
        </div>
      </div>
 
      <div class="form-group" style="padding:1.5em 0;">
        <label for="TeacherPassword" class="col-sm-2 control-label">Mot de passe</label>
        <div class="col-sm-10 required">
-         <input name="password" role="form" class="form-control" type="password" id="basic-addon1" required="required"/>
+         <input minlength=6 placeholder="Mot de passe" name="password" role="form" class="form-control" type="password" id="basic-addon1" required="required"/>
        </div>
      </div>
      <div class="form-group" style="padding:1.5em 0;">
@@ -94,13 +94,13 @@
      <div class="form-group" style="padding:1.5em 0;">
        <label for="TeacherEmail" class="col-sm-2 control-label">Adresse email</label>
        <div class="col-sm-10">
-         <input name="userConnect" role="form" class="form-control" maxlength="100" type="email" id="TeacherEmail"/>
+         <input placeholder="E-mail" name="userConnect" role="form" class="form-control" maxlength="100" type="email" id="TeacherEmail"/>
        </div>
      </div>
      <div class="form-group" style="padding:1.5em 0;">
        <label for="TeacherPassword" class="col-sm-2 control-label">Mot de passe</label>
        <div class="col-sm-10 required">
-         <input name="passwordConnect" role="form" class="form-control" type="password" id="TeacherPassword" required="required"/>
+         <input placeholder="Mot de passe" name="passwordConnect" role="form" class="form-control" type="password" id="TeacherPassword" required="required"/>
        </div>
      </div>
      <div class="form-group" style="padding:1.5em 0;">
