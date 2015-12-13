@@ -64,5 +64,8 @@
 
 			</div>
 		</div>
+		
+              <#import "footer.ftl" as m>
+               <@m.filterfooter />
 	</body>
 </html>
