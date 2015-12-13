@@ -28,16 +28,16 @@ public class TestMainDatabase {
 		
 		MainDatabase.addLaboratoire("aude", "aplanchamp@gmail.com", "0633504520", "yo");
 		MainDatabase.addAtelier("nomAtelier", "descriptionAtelier", "paris", "aude", "12/08/2015", "12:30", 40);
-		MainDatabase.printAllLaboratoire();
+	//	MainDatabase.printAllLaboratoire();
 		
-		Laboratoire myLab = MainDatabase.getLaboratoireByName("aude");
+		//Laboratoire myLab = MainDatabase.getLaboratoireByName("aude");
 		//Atelier myAtelier = MainDatabase.getAtelierByResponsable("aude");
 
 		
 		//assertEquals(myAtelier, atelierVerify);
 		assertEquals(MainDatabase.connexionLabo("aplanchamp@gmail.com", "yo"),true);
 		assertEquals(MainDatabase.connexionLabo("aplanchamp@gmail.com", "yoo"),false);
-		assertEquals(MainDatabase.connexionLabo("aplal.cm", "yoo"),false);
+		assertEquals(MainDatabase.connexionLabo("aplal.cm", "yojhjjo"),false);
 
 
 	}

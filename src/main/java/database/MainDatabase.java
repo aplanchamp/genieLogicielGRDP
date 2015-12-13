@@ -134,10 +134,10 @@ public class MainDatabase {
 		Connection connection = getDBConnection();
 		String InsertQuery = "INSERT INTO LABORATOIRE" + "(name, mail, phoneNumber, password) values" + "(?,?,?,?)";
 		PreparedStatement insertPreparedStatement = null;
-		String password2 = "123456";
+
 
 		try{ MessageDigest md = MessageDigest.getInstance("MD5");
-		md.update(password2.getBytes());
+		md.update(password.getBytes());
 		byte byteData[] = md.digest();
 
 
@@ -362,34 +362,36 @@ public class MainDatabase {
 	public static boolean connexionLabo(String mail, String password) throws SQLException{
 		// on recupere le mot de passe	
 		Connection connection = getDBConnection();
-		String SelectQuery = "select* from LABORATOIRE WHERE mail = mail";
+		String SelectQuery = "select* from LABORATOIRE WHERE mail = \'" +mail+"\' ";
 		PreparedStatement selectPreparedStatement = null;
 		connection.setAutoCommit(false);
 		selectPreparedStatement = connection.prepareStatement(SelectQuery);
 		ResultSet rs = selectPreparedStatement.executeQuery();
-		rs.first();
-		System.out.println("mail :" + rs.getString("mail"));
-
-		// on regarde dans la table de hashage
-		if (passwordcrypte.get(password) != null){
-		if (rs.getString("password").equals(passwordcrypte.get(password)))
-		{
-			// connexion possible
-			System.out.println("connexion ok");
-			return true;
-		}
-		else {
-			//mauvais mot de passe
-			System.out.println("mauvais mot de passe");
-			return false;
-		}
-		}
-		else {
-			// pas d'adresse mail
-			System.out.println("adresse mail non enregistré");
-			return false;
-		}
+		//rs.first();
+		//rs.getString("mail");
+	//	System.out.println("mail :" + rs.getString("mail") + " " + passwordcrypte.get(password));
 		
+		// on regarde dans la table de hashage
+		if (rs.first()){
+			
+			//rs.first();
+	//	rs.getString("mail");
+			if (rs.getString("password").equals(passwordcrypte.get(password)))
+			{
+				// connexion possible
+				System.out.println("connexion ok");
+				return true;
+			}
+			else {
+				//mauvais mot de passe
+				System.out.println("mauvais password");
+				return false;
+			}
+		}
+		else {
+		System.out.println("mauvaise adresse mail");
+		return false;
+		}
 	}
 
 
