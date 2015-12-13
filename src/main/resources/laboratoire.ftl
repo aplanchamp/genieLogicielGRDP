@@ -33,6 +33,8 @@
         			<@m.filterheader />
 
 							<div class="laboratoire">
+								<a href="/ajouter"><button class="btn btn-success" >Ajouter un nouvel atelier</button></a>
+								<hr>
 								<h2>Mon laboratoire: ${laboName}</h2>
 								<hr>
 								<h2>Liste de mes ateliers: </h2>
@@ -59,7 +61,6 @@
 										<button class="btn btn-primary btn-xs">Supprimer cet atelier</button>
 										<button class="btn btn-primary btn-xs">Voir les participants</button>
 										<hr>
-										<a href="/ajouter"><button class="btn btn-success" >Ajouter un nouvel atelier</button></a>
 									</div>
 								</#list>
 

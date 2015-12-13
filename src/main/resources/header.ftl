@@ -7,7 +7,7 @@
 				 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Le circuit</a>
 				 <ul class="dropdown-menu" role="menu">
 				 <li><a href="/">Accueil</a></li>
-				 <li><a href="/detailsAtelier">detailsAtelier</a></li>
+				 <li><a href="/listAtelier">Liste des Ateliers</a></li>
 				 </ul>
 			 </li>
 			 <li class="secured">
