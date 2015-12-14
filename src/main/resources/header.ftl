@@ -3,15 +3,17 @@
  <div class="container-fluid">
 	 <div class="collapse navbar-collapse">
 		 <ul class="nav navbar-nav">
-			 <li>
-          <a href="/listAtelier">Liste des Ateliers</a>
-       </li>
-			 </li>
-			 <li class="secured">
+       <li class="secured">
 				 <a href="/laboratoire">Espace Enseignants</a>
 			 </li>
        <li>
+          <a href="/listAtelier">Liste des Ateliers</a>
+       </li>
+       <li>
          <a href="/accueil?faq">FAQ</a>
+       </li>
+       <li>
+         <a href="/accueil?historique">Historique</a>
        </li>
 			 <li>
 				 <a href="/accueil?disconnect">Déconnexion</a>
