@@ -1,0 +1,16 @@
+addons:
+# language
+language: java
+
+# version numbers
+jdk:
+    - oraclejdk8
+
+after_success:
+  - mvn clean test jacoco:report coveralls:report
+
+# Use JDK 8u45. The above line just causes the use of a minor version of Java 8.
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
