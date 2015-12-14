@@ -19,8 +19,6 @@ public class AjouterModifierAtelierServlet extends AbstractServlet {
 						String nameAtelier = req.queryParams("name");
 						// Récupération de l'objet Atelier
 						Atelier mAtelier = MainDatabase.getAtelierByName(nameAtelier);
-						System.out.println("---------------");
-						System.out.println("GET /modifier");
 
 						// Ajout de l'objet atelier dans les attributs
 						Map<String, Object> attributes = new HashMap<>();
@@ -32,6 +30,18 @@ public class AjouterModifierAtelierServlet extends AbstractServlet {
 
 		} 
 		
+		else if (req.requestMethod() == "GET" && req.uri().toString().equals("/delete")  && req.queryParams("name") != null) {
+			// Récupération de l'atelier correspondant au paramètre
+			String nameAtelier = req.queryParams("name");
+			
+			// delete de l'atelier name
+			MainDatabase.deleteAtelierByName(nameAtelier);
+			
+			res.redirect("/laboratoire");
+			return null;
+
+} 
+		
 		else if (req.requestMethod() == "POST" && req.uri().toString().equals("/modifier")  && req.queryParams("name") != null){
 
 			Map<String, Object> attributes = new HashMap<>();
@@ -40,9 +50,8 @@ public class AjouterModifierAtelierServlet extends AbstractServlet {
 				// Modification d'un atelier par le laboratoire (variable de session)
 				MainDatabase.updateAtelier(req.queryParams("name"), req.queryParams("name_atelier"), 
 						req.queryParams("desc_atelier"), req.queryParams("lieu_atelier"), req.session().attributes().iterator().next(), 
-						req.queryParams("date_atelier"), req.queryParams("hour1_atelier"),req.queryParams("hour2_atelier"), Integer.parseInt(req.queryParams("avail_atelier")));
-				// Affiche dans la console les atelier présents (pour le test)
-				MainDatabase.printAllAtelier();
+						req.queryParams("date_atelier"), req.queryParams("hour1_atelier"),req.queryParams("hour2_atelier"), 
+						Integer.parseInt(req.queryParams("avail_atelier")));
 
 				res.redirect("/laboratoire");
 				return new ModelAndView(attributes, "errorRedirect.ftl");

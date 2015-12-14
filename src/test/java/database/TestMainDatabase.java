@@ -27,18 +27,14 @@ public class TestMainDatabase {
 		MainDatabase.addLaboratoire("aude", "aplanchamp@gmail.com", "0633504520", "yo");
 		MainDatabase.addAtelier("nomAtelier", "descriptionAtelier", "paris", "aude", "12/08/2015", "12:30", "14:30", 40);
 
-		MainDatabase.printAllLaboratoire();
 		
 		Laboratoire myLab = MainDatabase.getLaboratoireByName("aude");
 
-		MainDatabase.printAllLaboratoire();
-		MainDatabase.printAllAtelier();
 		MainDatabase.updateAtelier("nomAtelier", "nouveauNom", "coucou", "paris", "aude", "12/08/2015", "12:30", "15:30",  40);
-		MainDatabase.printAllAtelier();
 		Atelier myAtelierBis = MainDatabase.getAtelierByName("nouveauNom");
 		List<Atelier> myAteliers = MainDatabase.getAtelierByResponsable("aude");
 
-
+		MainDatabase.deleteAtelierByName("nouveauNom");
 		
 		assertEquals(myAteliers.get(0), atelierVerify);
 		assertEquals(myAtelierBis, atelierVerify);

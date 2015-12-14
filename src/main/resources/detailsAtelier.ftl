@@ -52,9 +52,11 @@
 								</dl>
 							</div>
 
-										<button class="btn btn-primary btn-xs" type="submit">
-										Supprimer l'atelier
-								</button>
+									<a href="/delete?name=${atelier.name}" >
+										<button class="btn btn-primary btn-xs" >
+											Supprimer l'atelier
+										</button>
+									</a>
 									<a href="/modifier?name=${atelier.name}" >
 										<button class="btn btn-primary btn-xs" >
 											Modifier l'atelier

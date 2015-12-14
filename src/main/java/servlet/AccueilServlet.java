@@ -21,7 +21,7 @@ public class AccueilServlet extends AbstractServlet {
 						request.queryParams("phone"), request.queryParams("password"));
 
 				request.session(true);
-				request.session().attribute(request.queryParams("name"), request.queryParams("name"));
+				request.session().attribute(request.queryParams("email"), request.queryParams("email"));
 				if (tmp == true)
 				response.redirect("/laboratoire");
 

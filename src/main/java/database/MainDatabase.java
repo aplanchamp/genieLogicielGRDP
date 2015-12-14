@@ -407,6 +407,30 @@ public class MainDatabase {
 
 		return null;
 	}
+	
+	public static void deleteAtelierByName(String name) throws SQLException {
+		Connection connection = getDBConnection();
+		String DeleteQuery = "delete from ATELIERS where name = \'" + name + "\' ";
+		System.out.println(DeleteQuery);
+		PreparedStatement deletePreparedStatement = null;
+		connection.setAutoCommit(false);
+		deletePreparedStatement = connection.prepareStatement(DeleteQuery);
+
+		try {
+			connection.setAutoCommit(false);
+			deletePreparedStatement = connection.prepareStatement(DeleteQuery);
+			deletePreparedStatement.execute();
+						deletePreparedStatement.close();
+			connection.commit();
+
+		} catch (SQLException e) {
+			System.out.println("Exception Message " + e.getLocalizedMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			connection.close();
+		}
+	}
 
 	public static List<Atelier> getAllAtelier() throws SQLException {
 		Connection connection = getDBConnection();
