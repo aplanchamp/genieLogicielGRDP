@@ -35,12 +35,11 @@ public class ListAtelierServlet extends AbstractServlet {
 				return new ModelAndView(attributes, "listAtelier.ftl");
 			} catch (Exception e) {
 				System.out.println("Exception handled - no table Ateliers created yet");
-				return new ModelAndView(attributes, "errorRedirect.ftl");
+				return new ModelAndView(attributes, "errorNoListAtelier.ftl");
 			}
 		} 
 
-		Map<String, Object> attributes = new HashMap<>(); // vide
-		return new ModelAndView(attributes, "errorRedirect.ftl");
+		return new ModelAndView(null, "errorRedirect.ftl");
 
 	}
 

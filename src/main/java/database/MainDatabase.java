@@ -40,7 +40,6 @@ public class MainDatabase {
 			createPreparedStatement.executeUpdate();
 			createPreparedStatement.close();
 			connection.commit();
-			System.out.println("Table LABORATOIRE created");
 		} catch (SQLException e) {
 			System.out.println("Exception Message " + e.getLocalizedMessage());
 		} catch (Exception e) {
@@ -153,8 +152,8 @@ public class MainDatabase {
 			selectNamePreparedStatement = connection.prepareStatement(SelectQueryName);
 			ResultSet rsName = selectNamePreparedStatement.executeQuery();
 
-			if (!rsEmail.first() && !rsName.first()) {
-
+			if ((rsEmail.next() == false) && (rsName.next() == false)) {
+				System.out.println("intérieur " + rsName.next() + rsEmail.isFirst());
 				insertPreparedStatement = connection.prepareStatement(InsertQuery);
 				insertPreparedStatement.setString(1, name);
 				insertPreparedStatement.setString(2, email);
@@ -195,9 +194,8 @@ public class MainDatabase {
 
 			selectNamePreparedStatement = connection.prepareStatement(SelectQueryName);
 			ResultSet rsName = selectNamePreparedStatement.executeQuery();
-
-			if (!rsName.first()) {
-
+	
+			if (rsName.next() != true) {	
 				insertPreparedStatement = connection.prepareStatement(InsertQuery);
 				insertPreparedStatement.setString(1, name);
 				insertPreparedStatement.setString(2, description);
@@ -417,10 +415,11 @@ public class MainDatabase {
 		deletePreparedStatement = connection.prepareStatement(DeleteQuery);
 
 		try {
+
 			connection.setAutoCommit(false);
 			deletePreparedStatement = connection.prepareStatement(DeleteQuery);
 			deletePreparedStatement.execute();
-						deletePreparedStatement.close();
+			deletePreparedStatement.close();
 			connection.commit();
 
 		} catch (SQLException e) {
