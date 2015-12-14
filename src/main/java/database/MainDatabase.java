@@ -415,10 +415,11 @@ public class MainDatabase {
 		deletePreparedStatement = connection.prepareStatement(DeleteQuery);
 
 		try {
+
 			connection.setAutoCommit(false);
 			deletePreparedStatement = connection.prepareStatement(DeleteQuery);
 			deletePreparedStatement.execute();
-						deletePreparedStatement.close();
+			deletePreparedStatement.close();
 			connection.commit();
 
 		} catch (SQLException e) {

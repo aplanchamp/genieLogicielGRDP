@@ -36,7 +36,7 @@ public class AjouterModifierAtelierServlet extends AbstractServlet {
 			// delete de l'atelier name
 			MainDatabase.deleteAtelierByName(nameAtelier);
 			res.redirect("/laboratoire");
-			return null;
+			return new ModelAndView(null, "errorRedirect.ftl");
 
 } 
 		
