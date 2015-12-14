@@ -33,10 +33,8 @@ public class AjouterModifierAtelierServlet extends AbstractServlet {
 		else if (req.requestMethod() == "GET" && req.uri().toString().equals("/delete")  && req.queryParams("name") != null) {
 			// Récupération de l'atelier correspondant au paramètre
 			String nameAtelier = req.queryParams("name");
-			
 			// delete de l'atelier name
 			MainDatabase.deleteAtelierByName(nameAtelier);
-			
 			res.redirect("/laboratoire");
 			return null;
 
@@ -44,7 +42,6 @@ public class AjouterModifierAtelierServlet extends AbstractServlet {
 		
 		else if (req.requestMethod() == "POST" && req.uri().toString().equals("/modifier")  && req.queryParams("name") != null){
 
-			Map<String, Object> attributes = new HashMap<>();
 
 			try {
 				// Modification d'un atelier par le laboratoire (variable de session)
@@ -54,10 +51,10 @@ public class AjouterModifierAtelierServlet extends AbstractServlet {
 						Integer.parseInt(req.queryParams("avail_atelier")));
 
 				res.redirect("/laboratoire");
-				return new ModelAndView(attributes, "errorRedirect.ftl");
+				return new ModelAndView(null, "errorRedirect.ftl");
 			} catch (Exception e) {
 				System.out.println("Exception handled - POST TO /listAtelier");
-				return new ModelAndView(attributes, "errorRedirect.ftl");
+				return new ModelAndView(null, "errorRedirect.ftl");
 
 			}
 
@@ -73,7 +70,6 @@ public class AjouterModifierAtelierServlet extends AbstractServlet {
 		}
 		
 		else if (req.requestMethod() == "POST" && req.uri().toString().equals("/ajouter")) {
-			Map<String, Object> attributes = new HashMap<>();
 
 			// Un visiteur veut ajouter un atelier depuis l'uri /ajouter
 			// Ici, les paramètres doivent être rentrés dans la base de données,
@@ -90,10 +86,10 @@ public class AjouterModifierAtelierServlet extends AbstractServlet {
 				
 				if (mbol == true)
 					res.redirect("/laboratoire");
-				return new ModelAndView(attributes, "errorRedirect.ftl");
+				return new ModelAndView(null, "errorRedirect.ftl");
 			} catch (Exception e) {
 				System.out.println("Exception handled - POST TO /listAtelier");
-				return new ModelAndView(attributes, "errorRedirect.ftl");
+				return new ModelAndView(null, "errorRedirect.ftl");
 
 			}
 

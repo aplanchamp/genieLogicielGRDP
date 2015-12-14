@@ -39,8 +39,7 @@ public class ListAtelierServlet extends AbstractServlet {
 			}
 		} 
 
-		Map<String, Object> attributes = new HashMap<>(); // vide
-		return new ModelAndView(attributes, "errorRedirect.ftl");
+		return new ModelAndView(null, "errorRedirect.ftl");
 
 	}
 

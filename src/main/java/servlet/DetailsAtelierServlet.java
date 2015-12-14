@@ -45,8 +45,7 @@ public class DetailsAtelierServlet extends AbstractServlet{
 	        return new ModelAndView(attributes, "detailsAtelierSubmit.ftl");
 		}
 		else {
-			Map<String, Object> attributes = new HashMap<>();
-			return new ModelAndView(attributes, "errorRedirect.ftl");
+			return new ModelAndView(null, "errorRedirect.ftl");
 		}
 	}
 }

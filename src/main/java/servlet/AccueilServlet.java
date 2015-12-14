@@ -56,8 +56,6 @@ public class AccueilServlet extends AbstractServlet {
 		}
 		else{
 			Map<String, Object> attributes = new HashMap<>();
-			attributes.put("header", "titi");
-			attributes.put("user", "coucou");
 			return new ModelAndView(attributes, "accueil.ftl");
 
 		}
