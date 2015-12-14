@@ -44,7 +44,7 @@ public class Main {
         get("/accueil", new AccueilServlet(),freeEngine);
         before("/accueil", (req, res) -> {
 			String user = getAuthenticatedUser(req);
-			if(user != null && req.queryParams("disconnect") == null) {
+			if(user != null && req.queryParams("disconnect") == null && req.queryParams("faq") == null && req.queryParams("historique") == null) {
 				res.redirect("/laboratoire");
 				halt(401, "Go away!");
 			}
