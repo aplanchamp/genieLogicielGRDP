@@ -3,18 +3,18 @@
  <div class="container-fluid">
 	 <div class="collapse navbar-collapse">
 		 <ul class="nav navbar-nav">
-			 <li class="dropdown">
-				 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Le circuit</a>
-				 <ul class="dropdown-menu" role="menu">
-				 <li><a href="/">Accueil</a></li>
-				 <li><a href="/listAtelier">Liste des Ateliers</a></li>
-				 </ul>
+			 <li>
+          <a href="/listAtelier">Liste des Ateliers</a>
+       </li>
 			 </li>
 			 <li class="secured">
 				 <a href="/laboratoire">Espace Enseignants</a>
 			 </li>
+       <li>
+         <a href="/accueil?faq">FAQ</a>
+       </li>
 			 <li>
-				 <a href="/accueil?disconnect">Disconnect</a>
+				 <a href="/accueil?disconnect">Déconnexion</a>
 			 </li>
 		 </ul>
 	 </div>

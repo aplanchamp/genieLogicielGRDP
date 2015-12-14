@@ -80,6 +80,8 @@
 
               <#import "footer.ftl" as m>
                <@m.filterfooter />
+
+             </body>
    		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
    		<script type="text/javascript" src="http://circuit-scientifique-bordelais.cnrs.fr/js/bootstrap.min.js"></script>    </body>
    </html>
