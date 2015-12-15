@@ -31,8 +31,8 @@ public class Main {
         staticFileLocation("/css");
         
         // Pour les tests, à chaque redémarrage, les tables sont supprimées
-        MainDatabase.dropTableAteliers();
-        MainDatabase.dropTableLaboratoire();
+        //MainDatabase.dropTableAteliers();
+        //MainDatabase.dropTableLaboratoire();
         
     	
     	// Redirection vers la servlet accueil
