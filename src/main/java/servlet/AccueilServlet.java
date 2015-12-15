@@ -54,7 +54,11 @@ public class AccueilServlet extends AbstractServlet {
 
 		} else if (request.requestMethod() == "GET" && request.queryParams("historique") != null) {
 			return new ModelAndView(null, "historique.ftl");
-		} else {
+		} else if (request.requestMethod()== "GET" && request.queryParams("contacts")!=null){
+			return new ModelAndView(null, "contacts.ftl");
+		}
+		
+		else {
 			Map<String, Object> attributes = new HashMap<>();
 			return new ModelAndView(attributes, "accueil.ftl");
 

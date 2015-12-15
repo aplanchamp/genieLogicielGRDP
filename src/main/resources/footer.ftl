@@ -29,7 +29,7 @@
    				<a href="http://www.ac-bordeaux.fr/"><img src="http://circuit-scientifique-bordelais.cnrs.fr/img/logos/ACBordeaux.png" id="ACBdXLogo" alt="logo de l'Académie de Bordeaux" title="Académie de Bordeaux"/></a>
    			</div>
    			<div id="footerLinks">
-   				<a href="/page/contacts">Contacts</a> | <a href="/admin/pages">Administrateurs</a> | <a href="/page/legals">Mentions légales</a>
+   				<a href="accueil?contacts">Contacts</a>
    			</div>
    		</div>
    	</div>
