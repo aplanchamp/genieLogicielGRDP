@@ -32,30 +32,31 @@
 
    				<div class="content" id="corpus">
 		 								<h1> Ajouter un Atelier </h1>
+                    <br>
 								<form method="POST" action="ajouter" class="col-md-8">
-									<div class="input-group col-md-8">
+									<div class="input-group col-md-8" style="padding:1.5em 0;">
 										<input type="text" class="form-control" placeholder="Nom de l'atelier" aria-describedby="basic-addon1" name="name_atelier" required>
 									</div>
 									<div class="input-group col-md-8">
 										<input type="text" class="form-control" placeholder="Description" aria-describedby="basic-addon1" name="desc_atelier" required>
 									</div>
-									<div class="input-group col-md-8">
-										<input type="time" class="form-control" placeholder="Heure de début" aria-describedby="basic-addon1" name="hour1_atelier" required>
-									<div class="input-group col-md-8">
-									</div>
-										<input type="time" class="form-control" placeholder="Heure de fin" aria-describedby="basic-addon1" name="hour2_atelier" required>
-									</div>
+                  <div class="form-group  col-md-8" style="padding:1.5em 0;">
+                    <label class="col-md-6 control-label">Heure début - fin</label>
+                      <input type="time" class="form-control" placeholder="Heure de début" aria-describedby="basic-addon1" name="hour1_atelier" required>
+                      <input type="time" class="form-control" placeholder="Heure de fin" aria-describedby="basic-addon1" name="hour2_atelier" required>
+                    </label>
+                  </div>
 									<div class="input-group col-md-8"> <!-- Change to type = date -->
 										<input type="text" class="form-control" placeholder="xx/xx/xxxx" aria-describedby="basic-addon1" name="date_atelier" pattern="[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]" required>
 									</div>
-									<div class="input-group col-md-8">
+									<div class="input-group col-md-8" style="padding:1.5em 0;">
 										<input type="text" class="form-control" placeholder="Lieu de l'atelier" aria-describedby="basic-addon1" name="lieu_atelier" required>
 									</div>
 									<div class="input-group col-md-8">
 										<input type="number" class="form-control" placeholder="Place disponibles" aria-describedby="basic-addon1" name="avail_atelier" required>
 									</div>
 
-									<div class="input-group col-md-8">
+									<div class="input-group col-md-8" style="padding:1.5em 0;">
 										<input type="submit" class="btn btn-primary btn-lg btn-block" value="Ajouter">
 									</div>
 								</form>
